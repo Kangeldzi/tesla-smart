@@ -135,9 +135,12 @@
         
         #admin-app.show { display: flex; }
         
-        /* ---------- SIDEBAR ---------- */
+        /* ============================================
+   SIDEBAR - LENGKAP DENGAN TEKS JELAS
+   ============================================ */
+
 .sidebar {
-    width: 250px;
+    width: 260px;
     background: #1c5d69;
     color: #fff;
     padding: 20px 0;
@@ -150,6 +153,7 @@
     transition: 0.3s;
 }
 
+/* BRAND / LOGO */
 .sidebar .brand {
     padding: 0 20px 20px;
     border-bottom: 1px solid rgba(255,255,255,0.15);
@@ -170,12 +174,14 @@
     font-size: 20px;
     font-weight: 800;
     color: #ffffff;
+    flex-shrink: 0;
 }
 
 .sidebar .brand h2 {
     font-size: 18px;
     font-weight: 700;
     color: #ffffff;
+    margin: 0;
 }
 
 .sidebar .brand small {
@@ -186,47 +192,44 @@
     color: #d4e6e8;
 }
 
+/* NAVIGASI MENU */
 .sidebar .nav-menu {
     list-style: none;
-    padding: 0 10px;
+    padding: 0 12px;
+    margin: 0;
 }
 
 .sidebar .nav-menu li {
-    margin-bottom: 2px;
+    margin-bottom: 3px;
 }
 
 /* ===== INI YANG PALING PENTING ===== */
 .sidebar .nav-menu li a {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
     padding: 12px 16px;
     border-radius: 10px;
     color: #ffffff;  /* ✅ PUTIH TERANG */
-    transition: 0.3s;
+    transition: all 0.3s ease;
     font-size: 14px;
     font-weight: 600;  /* ✅ LEBIH TEBAL */
-    text-shadow: 0 1px 3px rgba(0,0,0,0.25);  /* ✅ BAYANGAN */
-    letter-spacing: 0.3px;  /* ✅ SPASI HURUF */
-}
-
-.sidebar .nav-menu li a:hover {
-    background: rgba(255,255,255,0.2);
-    color: #ffffff;
-    transform: translateX(3px);
-}
-
-.sidebar .nav-menu li a.active {
-    background: rgba(255,255,255,0.2);
-    color: #ffffff;
-    border-left: 3px solid #ff2b56;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    letter-spacing: 0.3px;
+    text-decoration: none;
 }
 
 .sidebar .nav-menu li a .icon {
-    width: 22px;
+    width: 24px;
     text-align: center;
     font-size: 18px;
     color: #ffffff;
+    flex-shrink: 0;
+}
+
+.sidebar .nav-menu li a .menu-text {
+    flex: 1;
+    white-space: nowrap;
 }
 
 .sidebar .nav-menu li a .badge {
@@ -234,12 +237,94 @@
     background: #ff2b56;
     color: #ffffff;
     font-size: 10px;
-    padding: 2px 8px;
+    padding: 2px 10px;
     border-radius: 20px;
     font-weight: 700;
+    flex-shrink: 0;
 }
-/* ===== END ===== */
-        
+
+/* HOVER & ACTIVE */
+.sidebar .nav-menu li a:hover {
+    background: rgba(255,255,255,0.2);
+    color: #ffffff;
+    transform: translateX(4px);
+}
+
+.sidebar .nav-menu li a.active {
+    background: rgba(255,255,255,0.2);
+    color: #ffffff;
+    border-left: 4px solid #ff2b56;
+}
+
+/* ============================================
+   RESPONSIVE - TETAP TAMPIL DI SEMUA UKURAN
+   ============================================ */
+
+/* Tablet & Mobile Lebar */
+@media (max-width: 992px) {
+    .sidebar {
+        width: 230px;
+    }
+}
+
+/* Mobile - Teks TETAP TAMPIL */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 220px;  /* ✅ Cukup lebar untuk teks */
+        padding: 15px 0;
+    }
+    
+    /* ✅ Teks TETAP terlihat */
+    .sidebar .brand h2,
+    .sidebar .brand small,
+    .sidebar .nav-menu li a .menu-text,
+    .sidebar .nav-menu li a .badge {
+        display: block !important;  /* ✅ Dipaksa tampil */
+    }
+    
+    .sidebar .nav-menu li a {
+        padding: 11px 14px;
+        font-size: 13px;
+        gap: 12px;
+        justify-content: flex-start;
+    }
+    
+    .sidebar .nav-menu li a .icon {
+        font-size: 17px;
+        width: 26px;
+    }
+    
+    .sidebar .brand h2 {
+        font-size: 16px;
+    }
+}
+
+/* HP Kecil - Tetap Tampil */
+@media (max-width: 480px) {
+    .sidebar {
+        width: 200px;
+        padding: 10px 0;
+    }
+    
+    .sidebar .nav-menu li a {
+        padding: 10px 12px;
+        font-size: 12px;
+        gap: 10px;
+    }
+    
+    .sidebar .nav-menu li a .icon {
+        font-size: 15px;
+        width: 22px;
+    }
+    
+    .sidebar .brand h2 {
+        font-size: 14px;
+    }
+    
+    .sidebar .brand small {
+        font-size: 9px;
+    }
+} 
         /* ---------- MAIN CONTENT ---------- */
         .main-content {
             margin-left: 250px;
