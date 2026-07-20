@@ -330,6 +330,7 @@
             display: flex;
             gap: 10px;
             align-items: center;
+            flex-wrap: wrap;
         }
         
         .topbar .topbar-actions .btn {
@@ -338,6 +339,9 @@
             font-weight: 600;
             font-size: 13px;
             transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
         
         .topbar .topbar-actions .btn-primary {
@@ -376,6 +380,15 @@
         
         .topbar .topbar-actions .btn-success:hover {
             background: #27ae60;
+        }
+        
+        .topbar .topbar-actions .btn-view {
+            background: #3498db;
+            color: #fff;
+        }
+        
+        .topbar .topbar-actions .btn-view:hover {
+            background: #2980b9;
         }
         
         /* ---------- CARDS ---------- */
@@ -952,6 +965,17 @@
         .sortable-item:hover {
             background: #e8ecf1;
         }
+        
+        /* ---------- BADGE PILIHAN ---------- */
+        .badge-count {
+            background: #ff2b56;
+            color: #fff;
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-weight: 700;
+            margin-left: 5px;
+        }
     </style>
 </head>
 <body>
@@ -1024,6 +1048,9 @@
                     <p id="page-subtitle">Ringkasan aktivitas toko Anda</p>
                 </div>
                 <div class="topbar-actions">
+                    <button class="btn btn-view" onclick="window.open('index.html', '_blank')">
+                        👁️ Lihat Toko
+                    </button>
                     <button class="btn btn-outline" id="btn-refresh" title="Refresh data">🔄 Refresh</button>
                     <button class="btn btn-danger" id="btn-logout">🚪 Keluar</button>
                 </div>
@@ -1461,7 +1488,6 @@
             const savedPassword = DB.get('adminPassword');
             const currentPassword = savedPassword || DEFAULT_PASSWORD;
             
-            // Cek session
             const session = sessionStorage.getItem('teslasmart_admin_session');
             if (session === 'loggedin') {
                 isLoggedIn = true;
@@ -1516,19 +1542,15 @@
         let currentTab = 'dashboard';
         
         function navigateTo(tab) {
-            // Sembunyikan semua tab
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
             
-            // Tampilkan tab yang dipilih
             const targetTab = document.getElementById('tab-' + tab);
             if (targetTab) targetTab.classList.add('active');
             
-            // Update nav
             document.querySelectorAll('.nav-menu a').forEach(el => el.classList.remove('active'));
             const navLink = document.querySelector(`.nav-menu a[data-tab="${tab}"]`);
             if (navLink) navLink.classList.add('active');
             
-            // Update title
             const titles = {
                 dashboard: ['Dashboard', 'Ringkasan aktivitas toko Anda'],
                 products: ['Manajemen Produk', 'Kelola semua produk toko'],
@@ -1546,7 +1568,6 @@
             
             currentTab = tab;
             
-            // Render data sesuai tab
             if (tab === 'products') renderProducts();
             else if (tab === 'categories') renderCategories();
             else if (tab === 'articles') renderArticles();
@@ -1578,7 +1599,6 @@
             document.getElementById('stat-orders').textContent = data.orders.length;
             document.getElementById('stat-banners').textContent = data.banners.length;
             
-            // Orders terbaru (5 terakhir)
             const orders = data.orders.slice(-5).reverse();
             const tbody = document.getElementById('dashboard-orders-list');
             
@@ -1931,11 +1951,9 @@
             }
             
             if (id) {
-                // Edit
                 const index = data.products.findIndex(p => p.id === id);
                 if (index !== -1) data.products[index] = product;
             } else {
-                // Tambah
                 data.products.push(product);
             }
             
@@ -1944,9 +1962,7 @@
             renderProducts();
             updateCounts();
             showToast(id ? '✅ Produk berhasil diupdate!' : '✅ Produk berhasil ditambahkan!', 'success');
-            
-            // Trigger refresh di halaman index
-            localStorage.setItem('teslasmart_trigger_update', Date.now().toString());
+            triggerUpdate();
         }
         
         function deleteProduct(id) {
@@ -1957,7 +1973,7 @@
             renderProducts();
             updateCounts();
             showToast('🗑️ Produk berhasil dihapus', 'warning');
-            localStorage.setItem('teslasmart_trigger_update', Date.now().toString());
+            triggerUpdate();
         }
         
         function editProduct(id) {
@@ -1992,6 +2008,7 @@
             closeModal();
             renderCategories();
             showToast(id ? '✅ Kategori berhasil diupdate!' : '✅ Kategori berhasil ditambahkan!', 'success');
+            triggerUpdate();
         }
         
         function deleteCategory(id) {
@@ -2001,6 +2018,7 @@
             DB.saveAll(data);
             renderCategories();
             showToast('🗑️ Kategori berhasil dihapus', 'warning');
+            triggerUpdate();
         }
         
         function editCategory(id) {
@@ -2038,7 +2056,7 @@
             renderArticles();
             updateCounts();
             showToast(id ? '✅ Artikel berhasil diupdate!' : '✅ Artikel berhasil ditambahkan!', 'success');
-            localStorage.setItem('teslasmart_trigger_update', Date.now().toString());
+            triggerUpdate();
         }
         
         function deleteArticle(id) {
@@ -2049,7 +2067,7 @@
             renderArticles();
             updateCounts();
             showToast('🗑️ Artikel berhasil dihapus', 'warning');
-            localStorage.setItem('teslasmart_trigger_update', Date.now().toString());
+            triggerUpdate();
         }
         
         function editArticle(id) {
@@ -2086,7 +2104,7 @@
             renderBanners();
             updateCounts();
             showToast(id ? '✅ Banner berhasil diupdate!' : '✅ Banner berhasil ditambahkan!', 'success');
-            localStorage.setItem('teslasmart_trigger_update', Date.now().toString());
+            triggerUpdate();
         }
         
         function deleteBanner(id) {
@@ -2097,7 +2115,7 @@
             renderBanners();
             updateCounts();
             showToast('🗑️ Banner berhasil dihapus', 'warning');
-            localStorage.setItem('teslasmart_trigger_update', Date.now().toString());
+            triggerUpdate();
         }
         
         function editBanner(id) {
@@ -2171,7 +2189,6 @@
             
             DB.set('settings', settings);
             
-            // Update password jika diisi
             const newPassword = document.getElementById('setting-password').value.trim();
             if (newPassword) {
                 DB.set('adminPassword', newPassword);
@@ -2179,9 +2196,7 @@
             }
             
             showToast('✅ Pengaturan berhasil disimpan!', 'success');
-            localStorage.setItem('teslasmart_trigger_update', Date.now().toString());
-            
-            // Reset form password
+            triggerUpdate();
             document.getElementById('setting-password').value = '';
         }
         
@@ -2209,8 +2224,6 @@
             reader.onload = function(e) {
                 try {
                     const data = JSON.parse(e.target.result);
-                    
-                    // Validasi struktur data
                     const requiredKeys = ['settings', 'categories', 'products', 'banners', 'articles', 'orders'];
                     const isValid = requiredKeys.every(key => key in data);
                     
@@ -2223,7 +2236,7 @@
                         DB.saveAll(data);
                         renderAll();
                         showToast('✅ Data berhasil direstore!', 'success');
-                        localStorage.setItem('teslasmart_trigger_update', Date.now().toString());
+                        triggerUpdate();
                     }
                 } catch (err) {
                     showToast('❌ Gagal membaca file: ' + err.message, 'error');
@@ -2240,7 +2253,7 @@
             DB.reset();
             renderAll();
             showToast('🔄 Data telah direset ke default!', 'warning');
-            localStorage.setItem('teslasmart_trigger_update', Date.now().toString());
+            triggerUpdate();
         }
         
         // ============================================
@@ -2263,7 +2276,6 @@
             const data = DB.getAll();
             const products = data.products;
             
-            // Convert ke CSV
             if (products.length === 0) {
                 showToast('⚠️ Tidak ada produk untuk diexport', 'warning');
                 return;
@@ -2293,7 +2305,6 @@
                     const data = DB.getAll();
                     let importedProducts = [];
                     
-                    // Coba parse JSON
                     try {
                         const json = JSON.parse(e.target.result);
                         if (Array.isArray(json)) {
@@ -2302,7 +2313,6 @@
                             importedProducts = json.products;
                         }
                     } catch (err) {
-                        // Parse CSV
                         const lines = e.target.result.split('\n').filter(line => line.trim());
                         const headers = lines[0].split(',').map(h => h.replace(/"/g, '').trim());
                         
@@ -2332,7 +2342,7 @@
                     renderProducts();
                     updateCounts();
                     showToast(`✅ ${importedProducts.length} produk berhasil diimport!`, 'success');
-                    localStorage.setItem('teslasmart_trigger_update', Date.now().toString());
+                    triggerUpdate();
                 } catch (err) {
                     showToast('❌ Gagal import: ' + err.message, 'error');
                 }
@@ -2408,13 +2418,21 @@
                     renderArticles();
                     updateCounts();
                     showToast(`✅ ${importedArticles.length} artikel berhasil diimport!`, 'success');
-                    localStorage.setItem('teslasmart_trigger_update', Date.now().toString());
+                    triggerUpdate();
                 } catch (err) {
                     showToast('❌ Gagal import: ' + err.message, 'error');
                 }
             };
             reader.readAsText(file);
             event.target.value = '';
+        }
+        
+        // ============================================
+        // TRIGGER UPDATE
+        // ============================================
+        
+        function triggerUpdate() {
+            localStorage.setItem('teslasmart_trigger_update', Date.now().toString());
         }
         
         // ============================================
@@ -2440,16 +2458,13 @@
         // ============================================
         
         document.addEventListener('DOMContentLoaded', function() {
-            // Login
             document.getElementById('btn-login').addEventListener('click', handleLogin);
             document.getElementById('login-password').addEventListener('keydown', function(e) {
                 if (e.key === 'Enter') handleLogin();
             });
             
-            // Logout
             document.getElementById('btn-logout').addEventListener('click', handleLogout);
             
-            // Navigasi
             document.querySelectorAll('.nav-menu a').forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -2458,30 +2473,20 @@
                 });
             });
             
-            // Refresh
             document.getElementById('btn-refresh').addEventListener('click', function() {
                 renderAll();
                 showToast('🔄 Data berhasil di-refresh', 'info');
             });
             
-            // Tutup modal dengan klik overlay
             document.getElementById('modal-overlay').addEventListener('click', function(e) {
                 if (e.target === this) closeModal();
             });
             
-            // Check auth
             checkAuth();
         });
         
-        // ============================================
-        // KEYBOARD SHORTCUTS
-        // ============================================
-        
         document.addEventListener('keydown', function(e) {
-            // ESC untuk tutup modal
             if (e.key === 'Escape') closeModal();
-            
-            // Ctrl + R untuk refresh
             if (e.ctrlKey && e.key === 'r') {
                 e.preventDefault();
                 renderAll();
