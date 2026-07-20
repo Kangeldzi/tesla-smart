@@ -136,11 +136,11 @@
         #admin-app.show { display: flex; }
         
         /* ============================================
-   SIDEBAR - LENGKAP DENGAN TEKS JELAS
+   SIDEBAR - MINIMALIS DENGAN IKON SAJA
    ============================================ */
 
 .sidebar {
-    width: 260px;
+    width: 75px;  /* ✅ Lebar cukup untuk ikon */
     background: #1c5d69;
     color: #fff;
     padding: 20px 0;
@@ -151,180 +151,196 @@
     overflow-y: auto;
     z-index: 100;
     transition: 0.3s;
+    box-shadow: 2px 0 15px rgba(0,0,0,0.1);
 }
 
-/* BRAND / LOGO */
+/* BRAND / LOGO - HANYA IKON KERANJANG */
 .sidebar .brand {
-    padding: 0 20px 20px;
+    padding: 0 0 20px 0;
     border-bottom: 1px solid rgba(255,255,255,0.15);
     margin-bottom: 20px;
     display: flex;
     align-items: center;
-    gap: 12px;
+    justify-content: center;
 }
 
 .sidebar .brand .logo-icon {
-    width: 40px;
-    height: 40px;
-    background: rgba(255,255,255,0.2);
-    border-radius: 10px;
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 800;
     color: #ffffff;
-    flex-shrink: 0;
+    transition: 0.3s;
+    cursor: pointer;
 }
 
-.sidebar .brand h2 {
-    font-size: 18px;
-    font-weight: 700;
-    color: #ffffff;
-    margin: 0;
+.sidebar .brand .logo-icon:hover {
+    background: rgba(255,255,255,0.25);
+    transform: scale(1.05);
 }
 
+/* SEMBUNYIKAN TEKS JUDUL */
+.sidebar .brand h2,
 .sidebar .brand small {
-    font-size: 10px;
-    opacity: 0.8;
-    display: block;
-    font-weight: 400;
-    color: #d4e6e8;
+    display: none;  /* ✅ Teks "Dashboard" dan "TeslaSmart Admin" disembunyikan */
 }
 
-/* NAVIGASI MENU */
+/* NAVIGASI MENU - HANYA IKON */
 .sidebar .nav-menu {
     list-style: none;
-    padding: 0 12px;
+    padding: 0 10px;
     margin: 0;
 }
 
 .sidebar .nav-menu li {
-    margin-bottom: 3px;
+    margin-bottom: 4px;
 }
 
-/* ===== INI YANG PALING PENTING ===== */
+/* ===== STYLE TOMBOL DENGAN IKON SAJA ===== */
 .sidebar .nav-menu li a {
     display: flex;
     align-items: center;
-    gap: 14px;
-    padding: 12px 16px;
-    border-radius: 10px;
-    color: #ffffff;  /* ✅ PUTIH TERANG */
+    justify-content: center;  /* ✅ Ikon di tengah */
+    padding: 14px 0;
+    border-radius: 12px;
+    color: rgba(255,255,255,0.7);
     transition: all 0.3s ease;
-    font-size: 14px;
-    font-weight: 600;  /* ✅ LEBIH TEBAL */
-    text-shadow: 0 1px 3px rgba(0,0,0,0.2);
-    letter-spacing: 0.3px;
+    font-size: 24px;  /* ✅ Ukuran ikon besar */
     text-decoration: none;
+    position: relative;
 }
 
-.sidebar .nav-menu li a .icon {
-    width: 24px;
-    text-align: center;
-    font-size: 18px;
-    color: #ffffff;
-    flex-shrink: 0;
-}
-
-.sidebar .nav-menu li a .menu-text {
-    flex: 1;
-    white-space: nowrap;
-}
-
-.sidebar .nav-menu li a .badge {
-    margin-left: auto;
-    background: #ff2b56;
-    color: #ffffff;
-    font-size: 10px;
-    padding: 2px 10px;
-    border-radius: 20px;
-    font-weight: 700;
-    flex-shrink: 0;
-}
-
-/* HOVER & ACTIVE */
+/* HOVER - Background & Geser */
 .sidebar .nav-menu li a:hover {
-    background: rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.15);
     color: #ffffff;
-    transform: translateX(4px);
+    transform: translateX(4px);  /* ✅ Efek geser */
 }
 
+/* ACTIVE - Background & Garis */
 .sidebar .nav-menu li a.active {
-    background: rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.18);
     color: #ffffff;
     border-left: 4px solid #ff2b56;
+    transform: translateX(0);
+}
+
+/* TOOLTIP - Muncul saat hover (Opsional) */
+.sidebar .nav-menu li a .tooltip {
+    position: absolute;
+    left: 75px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #0f3b44;
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    z-index: 999;
+}
+
+.sidebar .nav-menu li a .tooltip::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 6px solid transparent;
+    border-right-color: #0f3b44;
+}
+
+.sidebar .nav-menu li a:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+    left: 85px;
+}
+
+/* BADGE - Jumlah di pojok ikon */
+.sidebar .nav-menu li a .badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background: #ff2b56;
+    color: #ffffff;
+    font-size: 9px;
+    padding: 2px 7px;
+    border-radius: 20px;
+    font-weight: 700;
+    min-width: 18px;
+    text-align: center;
+    border: 2px solid #1c5d69;
+}
+
+/* SEMBUNYIKAN TEKS MENU (Hanya ikon) */
+.sidebar .nav-menu li a .menu-text {
+    display: none;
 }
 
 /* ============================================
-   RESPONSIVE - TETAP TAMPIL DI SEMUA UKURAN
+   RESPONSIVE - TETAP IKON DI SEMUA UKURAN
    ============================================ */
 
-/* Tablet & Mobile Lebar */
-@media (max-width: 992px) {
-    .sidebar {
-        width: 230px;
-    }
-}
-
-/* Mobile - Teks TETAP TAMPIL */
 @media (max-width: 768px) {
     .sidebar {
-        width: 220px;  /* ✅ Cukup lebar untuk teks */
+        width: 65px;  /* ✅ Lebih kecil di mobile */
         padding: 15px 0;
     }
     
-    /* ✅ Teks TETAP terlihat */
-    .sidebar .brand h2,
-    .sidebar .brand small,
-    .sidebar .nav-menu li a .menu-text,
-    .sidebar .nav-menu li a .badge {
-        display: block !important;  /* ✅ Dipaksa tampil */
+    .sidebar .brand .logo-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
     }
     
     .sidebar .nav-menu li a {
-        padding: 11px 14px;
-        font-size: 13px;
-        gap: 12px;
-        justify-content: flex-start;
+        padding: 12px 0;
+        font-size: 20px;
     }
     
-    .sidebar .nav-menu li a .icon {
-        font-size: 17px;
-        width: 26px;
+    .sidebar .nav-menu li a .tooltip {
+        left: 60px;
+        font-size: 11px;
+        padding: 5px 12px;
     }
     
-    .sidebar .brand h2 {
-        font-size: 16px;
+    .sidebar .nav-menu li a:hover .tooltip {
+        left: 70px;
     }
 }
 
-/* HP Kecil - Tetap Tampil */
 @media (max-width: 480px) {
     .sidebar {
-        width: 200px;
+        width: 55px;
         padding: 10px 0;
     }
     
+    .sidebar .brand .logo-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 17px;
+    }
+    
     .sidebar .nav-menu li a {
-        padding: 10px 12px;
-        font-size: 12px;
-        gap: 10px;
+        padding: 10px 0;
+        font-size: 17px;
     }
     
-    .sidebar .nav-menu li a .icon {
-        font-size: 15px;
-        width: 22px;
+    .sidebar .nav-menu li a .tooltip {
+        display: none;  /* ✅ Sembunyikan tooltip di HP sangat kecil */
     }
-    
-    .sidebar .brand h2 {
-        font-size: 14px;
-    }
-    
-    .sidebar .brand small {
-        font-size: 9px;
-    }
-} 
+}
+
         /* ---------- MAIN CONTENT ---------- */
         .main-content {
             margin-left: 250px;
@@ -966,26 +982,76 @@
     <div id="admin-app">
         
         <!-- SIDEBAR -->
-        <aside class="sidebar">
-            <div class="brand">
-                <div class="logo-icon">🛒</div>
-                <div>
-                    <h2>Dashboard</h2>
-                    <small>TeslaSmart Admin</small>
-                </div>
-            </div>
-            
-            <ul class="nav-menu">
-                <li><a href="#tab-dashboard" class="active" data-tab="dashboard"><span class="icon">📊</span> <span>Dashboard</span></a></li>
-                <li><a href="#tab-products" data-tab="products"><span class="icon">📦</span> <span>Produk</span> <span class="badge" id="product-count">0</span></a></li>
-                <li><a href="#tab-categories" data-tab="categories"><span class="icon">🏷️</span> <span>Kategori</span></a></li>
-                <li><a href="#tab-articles" data-tab="articles"><span class="icon">📝</span> <span>Artikel</span> <span class="badge" id="article-count">0</span></a></li>
-                <li><a href="#tab-banners" data-tab="banners"><span class="icon">🖼️</span> <span>Banner</span> <span class="badge" id="banner-count">0</span></a></li>
-                <li><a href="#tab-orders" data-tab="orders"><span class="icon">📋</span> <span>Pesanan</span> <span class="badge" id="order-count">0</span></a></li>
-                <li><a href="#tab-settings" data-tab="settings"><span class="icon">⚙️</span> <span>Pengaturan</span></a></li>
-                <li><a href="#tab-backup" data-tab="backup"><span class="icon">💾</span> <span>Backup</span></a></li>
-            </ul>
-        </aside>
+<aside class="sidebar">
+    <!-- BRAND - HANYA IKON KERANJANG -->
+    <div class="brand">
+        <div class="logo-icon">🛒</div>
+    </div>
+    
+    <!-- NAV MENU - HANYA IKON -->
+    <ul class="nav-menu">
+        <li>
+            <a href="#tab-dashboard" class="active" data-tab="dashboard">
+                <span class="icon">📊</span>
+                <span class="menu-text">Dashboard</span>
+                <span class="tooltip">Dashboard</span>
+            </a>
+        </li>
+        <li>
+            <a href="#tab-products" data-tab="products">
+                <span class="icon">📦</span>
+                <span class="menu-text">Produk</span>
+                <span class="badge" id="product-count">0</span>
+                <span class="tooltip">Produk</span>
+            </a>
+        </li>
+        <li>
+            <a href="#tab-categories" data-tab="categories">
+                <span class="icon">🏷️</span>
+                <span class="menu-text">Kategori</span>
+                <span class="tooltip">Kategori</span>
+            </a>
+        </li>
+        <li>
+            <a href="#tab-articles" data-tab="articles">
+                <span class="icon">📝</span>
+                <span class="menu-text">Artikel</span>
+                <span class="badge" id="article-count">0</span>
+                <span class="tooltip">Artikel</span>
+            </a>
+        </li>
+        <li>
+            <a href="#tab-banners" data-tab="banners">
+                <span class="icon">🖼️</span>
+                <span class="menu-text">Banner</span>
+                <span class="badge" id="banner-count">0</span>
+                <span class="tooltip">Banner</span>
+            </a>
+        </li>
+        <li>
+            <a href="#tab-orders" data-tab="orders">
+                <span class="icon">📋</span>
+                <span class="menu-text">Pesanan</span>
+                <span class="badge" id="order-count">0</span>
+                <span class="tooltip">Pesanan</span>
+            </a>
+        </li>
+        <li>
+            <a href="#tab-settings" data-tab="settings">
+                <span class="icon">⚙️</span>
+                <span class="menu-text">Pengaturan</span>
+                <span class="tooltip">Pengaturan</span>
+            </a>
+        </li>
+        <li>
+            <a href="#tab-backup" data-tab="backup">
+                <span class="icon">💾</span>
+                <span class="menu-text">Backup</span>
+                <span class="tooltip">Backup & Restore</span>
+            </a>
+        </li>
+    </ul>
+</aside>
         
         <!-- MAIN CONTENT -->
         <main class="main-content">
