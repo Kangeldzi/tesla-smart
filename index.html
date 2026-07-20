@@ -136,88 +136,109 @@
         #admin-app.show { display: flex; }
         
         /* ---------- SIDEBAR ---------- */
-        .sidebar {
-            width: 250px;
-            background: #1c5d69;
-            color: #fff;
-            padding: 20px 0;
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 100%;
-            overflow-y: auto;
-            z-index: 100;
-            transition: 0.3s;
-        }
-        
-        .sidebar .brand {
-            padding: 0 20px 20px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .sidebar .brand .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: rgba(255,255,255,0.15);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            font-weight: 800;
-        }
-        
-        .sidebar .brand h2 { font-size: 18px; font-weight: 700; }
-        .sidebar .brand small { font-size: 10px; opacity: 0.7; display: block; font-weight: 400; }
-        
-        .sidebar .nav-menu {
-            list-style: none;
-            padding: 0 10px;
-        }
-        
-        .sidebar .nav-menu li { margin-bottom: 2px; }
-        
-        .sidebar .nav-menu li a {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 16px;
-            border-radius: 10px;
-            color: rgba(255,255,255,0.7);
-            transition: 0.3s;
-            font-size: 14px;
-            font-weight: 500;
-        }
-        
-        .sidebar .nav-menu li a:hover {
-            background: rgba(255,255,255,0.1);
-            color: #fff;
-        }
-        
-        .sidebar .nav-menu li a.active {
-            background: rgba(255,255,255,0.15);
-            color: #fff;
-        }
-        
-        .sidebar .nav-menu li a .icon {
-            width: 22px;
-            text-align: center;
-            font-size: 18px;
-        }
-        
-        .sidebar .nav-menu li a .badge {
-            margin-left: auto;
-            background: #ff2b56;
-            color: #fff;
-            font-size: 10px;
-            padding: 2px 8px;
-            border-radius: 20px;
-            font-weight: 700;
-        }
+.sidebar {
+    width: 250px;
+    background: #1c5d69;
+    color: #fff;
+    padding: 20px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    overflow-y: auto;
+    z-index: 100;
+    transition: 0.3s;
+}
+
+.sidebar .brand {
+    padding: 0 20px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.sidebar .brand .logo-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.sidebar .brand h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.sidebar .brand small {
+    font-size: 10px;
+    opacity: 0.8;
+    display: block;
+    font-weight: 400;
+    color: #d4e6e8;
+}
+
+.sidebar .nav-menu {
+    list-style: none;
+    padding: 0 10px;
+}
+
+.sidebar .nav-menu li {
+    margin-bottom: 2px;
+}
+
+/* ===== INI YANG PALING PENTING ===== */
+.sidebar .nav-menu li a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    color: #ffffff;  /* ✅ PUTIH TERANG */
+    transition: 0.3s;
+    font-size: 14px;
+    font-weight: 600;  /* ✅ LEBIH TEBAL */
+    text-shadow: 0 1px 3px rgba(0,0,0,0.25);  /* ✅ BAYANGAN */
+    letter-spacing: 0.3px;  /* ✅ SPASI HURUF */
+}
+
+.sidebar .nav-menu li a:hover {
+    background: rgba(255,255,255,0.2);
+    color: #ffffff;
+    transform: translateX(3px);
+}
+
+.sidebar .nav-menu li a.active {
+    background: rgba(255,255,255,0.2);
+    color: #ffffff;
+    border-left: 3px solid #ff2b56;
+}
+
+.sidebar .nav-menu li a .icon {
+    width: 22px;
+    text-align: center;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.sidebar .nav-menu li a .badge {
+    margin-left: auto;
+    background: #ff2b56;
+    color: #ffffff;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-weight: 700;
+}
+/* ===== END ===== */
         
         /* ---------- MAIN CONTENT ---------- */
         .main-content {
