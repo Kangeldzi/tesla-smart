@@ -124,290 +124,279 @@
         
         .login-box .error-msg.show { display: block; }
         
-        /* ---------- LAYOUT ADMIN ---------- */
-        #admin-app {
+        /* ============================================
+           SIDEBAR - MINIMALIS DENGAN SVG IKON
+           ============================================ */
+        
+        .sidebar {
+            width: 75px;
+            background: #1c5d69;
+            color: #fff;
+            padding: 20px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            overflow-y: auto;
+            z-index: 100;
+            transition: 0.3s;
+            box-shadow: 2px 0 15px rgba(0,0,0,0.1);
+        }
+        
+        /* BRAND - IKON KERANJANG */
+        .sidebar .brand {
+            padding: 0 0 20px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .sidebar .brand .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        
+        .sidebar .brand .logo-icon:hover {
+            background: rgba(255,255,255,0.25);
+            transform: scale(1.05);
+        }
+        
+        .sidebar .brand .logo-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: #ffffff;
+        }
+        
+        /* SEMBUNYIKAN TEKS JUDUL */
+        .sidebar .brand h2,
+        .sidebar .brand small {
             display: none;
+        }
+        
+        /* NAVIGASI MENU */
+        .sidebar .nav-menu {
+            list-style: none;
+            padding: 0 10px;
+            margin: 0;
+        }
+        
+        .sidebar .nav-menu li {
+            margin-bottom: 4px;
+        }
+        
+        /* ===== TOMBOL DENGAN SVG IKON ===== */
+        .sidebar .nav-menu li a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 0;
+            border-radius: 12px;
+            color: rgba(255,255,255,0.7);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            position: relative;
+        }
+        
+        /* IKON SVG */
+        .sidebar .nav-menu li a .icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+        }
+        
+        .sidebar .nav-menu li a .icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        
+        /* HOVER - Background & Geser */
+        .sidebar .nav-menu li a:hover {
+            background: rgba(255,255,255,0.15);
+            color: #ffffff;
+            transform: translateX(4px);
+        }
+        
+        /* ACTIVE - Background & Garis */
+        .sidebar .nav-menu li a.active {
+            background: rgba(255,255,255,0.18);
+            color: #ffffff;
+            border-left: 4px solid #ff2b56;
+            transform: translateX(0);
+        }
+        
+        /* TOOLTIP - Muncul saat hover */
+        .sidebar .nav-menu li a .tooltip {
+            position: absolute;
+            left: 75px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #0f3b44;
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 999;
+        }
+        
+        .sidebar .nav-menu li a .tooltip::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: 6px solid transparent;
+            border-right-color: #0f3b44;
+        }
+        
+        .sidebar .nav-menu li a:hover .tooltip {
+            opacity: 1;
+            visibility: visible;
+            left: 85px;
+        }
+        
+        /* BADGE - Jumlah di pojok ikon */
+        .sidebar .nav-menu li a .badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background: #ff2b56;
+            color: #ffffff;
+            font-size: 9px;
+            padding: 2px 7px;
+            border-radius: 20px;
+            font-weight: 700;
+            min-width: 18px;
+            text-align: center;
+            border: 2px solid #1c5d69;
+        }
+        
+        /* SEMBUNYIKAN TEKS MENU */
+        .sidebar .nav-menu li a .menu-text {
+            display: none;
+        }
+        
+        /* ============================================
+           RESPONSIVE SIDEBAR
+           ============================================ */
+        
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 65px;
+                padding: 15px 0;
+            }
+            
+            .sidebar .brand .logo-icon {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .sidebar .brand .logo-icon svg {
+                width: 22px;
+                height: 22px;
+            }
+            
+            .sidebar .nav-menu li a {
+                padding: 12px 0;
+            }
+            
+            .sidebar .nav-menu li a .icon svg {
+                width: 18px;
+                height: 18px;
+            }
+            
+            .sidebar .nav-menu li a .tooltip {
+                left: 60px;
+                font-size: 11px;
+                padding: 5px 12px;
+            }
+            
+            .sidebar .nav-menu li a:hover .tooltip {
+                left: 70px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .sidebar {
+                width: 55px;
+                padding: 10px 0;
+            }
+            
+            .sidebar .brand .logo-icon {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .sidebar .brand .logo-icon svg {
+                width: 18px;
+                height: 18px;
+            }
+            
+            .sidebar .nav-menu li a {
+                padding: 10px 0;
+            }
+            
+            .sidebar .nav-menu li a .icon svg {
+                width: 16px;
+                height: 16px;
+            }
+            
+            .sidebar .nav-menu li a .tooltip {
+                display: none;
+            }
+        }
+        
+        /* ============================================
+           MAIN CONTENT
+           ============================================ */
+        
+        .main-content {
+            margin-left: 75px;
+            flex: 1;
+            padding: 25px 30px 80px;
             min-height: 100vh;
-            width: 100%;
+            width: calc(100% - 75px);
             max-width: 100%;
             overflow-x: hidden;
         }
         
-        #admin-app.show { display: flex; }
+        @media (max-width: 768px) {
+            .main-content {
+                margin-left: 65px;
+                width: calc(100% - 65px);
+                padding: 15px 12px 80px;
+            }
+        }
         
-/* ============================================
-   SIDEBAR - MINIMALIS DENGAN SVG IKON
-   ============================================ */
-
-.sidebar {
-    width: 75px;
-    background: #1c5d69;
-    color: #fff;
-    padding: 20px 0;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    overflow-y: auto;
-    z-index: 100;
-    transition: 0.3s;
-    box-shadow: 2px 0 15px rgba(0,0,0,0.1);
-}
-
-/* BRAND - IKON KERANJANG */
-.sidebar .brand {
-    padding: 0 0 20px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.15);
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.sidebar .brand .logo-icon {
-    width: 45px;
-    height: 45px;
-    background: rgba(255,255,255,0.15);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #ffffff;
-    transition: 0.3s;
-    cursor: pointer;
-}
-
-.sidebar .brand .logo-icon:hover {
-    background: rgba(255,255,255,0.25);
-    transform: scale(1.05);
-}
-
-.sidebar .brand .logo-icon svg {
-    width: 28px;
-    height: 28px;
-    stroke: #ffffff;
-}
-
-/* SEMBUNYIKAN TEKS JUDUL */
-.sidebar .brand h2,
-.sidebar .brand small {
-    display: none;
-}
-
-/* NAVIGASI MENU */
-.sidebar .nav-menu {
-    list-style: none;
-    padding: 0 10px;
-    margin: 0;
-}
-
-.sidebar .nav-menu li {
-    margin-bottom: 4px;
-}
-
-/* ===== TOMBOL DENGAN SVG IKON ===== */
-.sidebar .nav-menu li a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 14px 0;
-    border-radius: 12px;
-    color: rgba(255,255,255,0.7);
-    transition: all 0.3s ease;
-    text-decoration: none;
-    position: relative;
-}
-
-/* IKON SVG */
-.sidebar .nav-menu li a .icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 24px;
-    height: 24px;
-}
-
-.sidebar .nav-menu li a .icon svg {
-    width: 22px;
-    height: 22px;
-    stroke: currentColor;
-    fill: none;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-/* HOVER - Background & Geser */
-.sidebar .nav-menu li a:hover {
-    background: rgba(255,255,255,0.15);
-    color: #ffffff;
-    transform: translateX(4px);
-}
-
-/* ACTIVE - Background & Garis */
-.sidebar .nav-menu li a.active {
-    background: rgba(255,255,255,0.18);
-    color: #ffffff;
-    border-left: 4px solid #ff2b56;
-    transform: translateX(0);
-}
-
-/* TOOLTIP - Muncul saat hover */
-.sidebar .nav-menu li a .tooltip {
-    position: absolute;
-    left: 75px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: #0f3b44;
-    color: #fff;
-    padding: 6px 14px;
-    border-radius: 8px;
-    font-size: 12px;
-    font-weight: 600;
-    white-space: nowrap;
-    opacity: 0;
-    visibility: hidden;
-    transition: 0.3s;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    z-index: 999;
-}
-
-.sidebar .nav-menu li a .tooltip::before {
-    content: '';
-    position: absolute;
-    left: -6px;
-    top: 50%;
-    transform: translateY(-50%);
-    border: 6px solid transparent;
-    border-right-color: #0f3b44;
-}
-
-.sidebar .nav-menu li a:hover .tooltip {
-    opacity: 1;
-    visibility: visible;
-    left: 85px;
-}
-
-/* BADGE - Jumlah di pojok ikon */
-.sidebar .nav-menu li a .badge {
-    position: absolute;
-    top: -4px;
-    right: -4px;
-    background: #ff2b56;
-    color: #ffffff;
-    font-size: 9px;
-    padding: 2px 7px;
-    border-radius: 20px;
-    font-weight: 700;
-    min-width: 18px;
-    text-align: center;
-    border: 2px solid #1c5d69;
-}
-
-/* SEMBUNYIKAN TEKS MENU */
-.sidebar .nav-menu li a .menu-text {
-    display: none;
-}
-
-/* ============================================
-   RESPONSIVE
-   ============================================ */
-
-@media (max-width: 768px) {
-    .sidebar {
-        width: 65px;
-        padding: 15px 0;
-    }
-    
-    .sidebar .brand .logo-icon {
-        width: 40px;
-        height: 40px;
-    }
-    
-    .sidebar .brand .logo-icon svg {
-        width: 22px;
-        height: 22px;
-    }
-    
-    .sidebar .nav-menu li a {
-        padding: 12px 0;
-    }
-    
-    .sidebar .nav-menu li a .icon svg {
-        width: 18px;
-        height: 18px;
-    }
-    
-    .sidebar .nav-menu li a .tooltip {
-        left: 60px;
-        font-size: 11px;
-        padding: 5px 12px;
-    }
-    
-    .sidebar .nav-menu li a:hover .tooltip {
-        left: 70px;
-    }
-}
-
-@media (max-width: 480px) {
-    .sidebar {
-        width: 55px;
-        padding: 10px 0;
-    }
-    
-    .sidebar .brand .logo-icon {
-        width: 35px;
-        height: 35px;
-    }
-    
-    .sidebar .brand .logo-icon svg {
-        width: 18px;
-        height: 18px;
-    }
-    
-    .sidebar .nav-menu li a {
-        padding: 10px 0;
-    }
-    
-    .sidebar .nav-menu li a .icon svg {
-        width: 16px;
-        height: 16px;
-    }
-    
-    .sidebar .nav-menu li a .tooltip {
-        display: none;
-    }
-}
-
-/* ============================================
-   MAIN CONTENT - Sesuaikan dengan sidebar
-   ============================================ */
-
-.main-content {
-    margin-left: 75px;
-    flex: 1;
-    padding: 25px 30px 80px;
-    min-height: 100vh;
-    width: calc(100% - 75px);
-    max-width: 100%;
-    overflow-x: hidden;
-}
-
-@media (max-width: 768px) {
-    .main-content {
-        margin-left: 65px;
-        width: calc(100% - 65px);
-        padding: 15px 12px 80px;
-    }
-}
-
-@media (max-width: 480px) {
-    .main-content {
-        margin-left: 55px;
-        width: calc(100% - 55px);
-        padding: 12px 10px 80px;
-    }
-}
+        @media (max-width: 480px) {
+            .main-content {
+                margin-left: 55px;
+                width: calc(100% - 55px);
+                padding: 12px 10px 80px;
+            }
+        }
         
         /* ---------- TOP BAR ---------- */
         .topbar {
@@ -454,7 +443,6 @@
             background: #1c5d69;
             color: #fff;
         }
-        
         .topbar .topbar-actions .btn-primary:hover { background: #143f48; }
         
         .topbar .topbar-actions .btn-outline {
@@ -462,7 +450,6 @@
             color: #1c5d69;
             border: 2px solid #1c5d69;
         }
-        
         .topbar .topbar-actions .btn-outline:hover {
             background: #1c5d69;
             color: #fff;
@@ -472,21 +459,18 @@
             background: #e74c3c;
             color: #fff;
         }
-        
         .topbar .topbar-actions .btn-danger:hover { background: #c0392b; }
         
         .topbar .topbar-actions .btn-success {
             background: #2ecc71;
             color: #fff;
         }
-        
         .topbar .topbar-actions .btn-success:hover { background: #27ae60; }
         
         .topbar .topbar-actions .btn-view {
             background: #3498db;
             color: #fff;
         }
-        
         .topbar .topbar-actions .btn-view:hover { background: #2980b9; }
         
         /* ---------- STATS CARDS - 2x2 Grid di Mobile ---------- */
@@ -629,7 +613,6 @@
             background: #dbeafe;
             color: #2563eb;
         }
-        
         table .action-btns .btn-edit:hover {
             background: #2563eb;
             color: #fff;
@@ -639,7 +622,6 @@
             background: #fee2e2;
             color: #dc2626;
         }
-        
         table .action-btns .btn-delete:hover {
             background: #dc2626;
             color: #fff;
@@ -649,7 +631,6 @@
             background: #fef3c7;
             color: #d97706;
         }
-        
         table .action-btns .btn-status:hover {
             background: #d97706;
             color: #fff;
@@ -718,14 +699,12 @@
             background: #1c5d69;
             color: #fff;
         }
-        
         .form-actions .btn-submit:hover { background: #143f48; }
         
         .form-actions .btn-cancel {
             background: #e8ecf1;
             color: #555;
         }
-        
         .form-actions .btn-cancel:hover { background: #d5d8dd; }
         
         /* ---------- MODAL ---------- */
@@ -844,48 +823,6 @@
         }
         
         @media (max-width: 768px) {
-            .sidebar {
-                width: 60px;
-                padding: 10px 0;
-            }
-            
-            .sidebar .brand h2,
-            .sidebar .brand small,
-            .sidebar .nav-menu li a span,
-            .sidebar .nav-footer .user-info .name,
-            .sidebar .nav-footer .user-info .role {
-                display: none;
-            }
-            
-            .sidebar .brand {
-                padding: 0 10px 15px;
-                justify-content: center;
-            }
-            
-            .sidebar .nav-menu li a {
-                justify-content: center;
-                padding: 12px;
-            }
-            
-            .sidebar .nav-menu li a .icon {
-                font-size: 22px;
-            }
-            
-            .sidebar .nav-footer {
-                padding: 10px 0;
-                text-align: center;
-            }
-            
-            .sidebar .nav-footer .user-info {
-                justify-content: center;
-            }
-            
-            .main-content {
-                margin-left: 60px;
-                padding: 15px 12px 80px;
-                width: calc(100% - 60px);
-            }
-            
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 12px;
@@ -1003,11 +940,6 @@
         .justify-between { justify-content: space-between; }
         
         .hidden { display: none !important; }
-        
-        /* ---------- HAPUS ELEMEN TIDAK BERGUNA ---------- */
-        .sidebar .nav-footer {
-            display: none !important;
-        }
     </style>
 </head>
 <body>
@@ -1039,126 +971,126 @@
     <div id="admin-app">
         
         <!-- SIDEBAR -->
-<aside class="sidebar">
-    <!-- BRAND - HANYA IKON KERANJANG -->
-    <div class="brand">
-        <div class="logo-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="9" cy="21" r="1"/>
-                <circle cx="20" cy="21" r="1"/>
-                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
-            </svg>
-        </div>
-    </div>
-    
-    <!-- NAV MENU - HANYA IKON SVG -->
-    <ul class="nav-menu">
-        <li>
-            <a href="#tab-dashboard" class="active" data-tab="dashboard">
-                <span class="icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="3" y="3" width="7" height="7" rx="1"/>
-                        <rect x="14" y="3" width="7" height="7" rx="1"/>
-                        <rect x="3" y="14" width="7" height="7" rx="1"/>
-                        <rect x="14" y="14" width="7" height="7" rx="1"/>
+        <aside class="sidebar">
+            <!-- BRAND - HANYA IKON KERANJANG -->
+            <div class="brand">
+                <div class="logo-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1"/>
+                        <circle cx="20" cy="21" r="1"/>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
                     </svg>
-                </span>
-                <span class="tooltip">Dashboard</span>
-            </a>
-        </li>
-        <li>
-            <a href="#tab-products" data-tab="products">
-                <span class="icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-                        <line x1="3" y1="6" x2="21" y2="6"/>
-                        <path d="M16 10a4 4 0 0 1-8 0"/>
-                    </svg>
-                </span>
-                <span class="badge" id="product-count">0</span>
-                <span class="tooltip">Produk</span>
-            </a>
-        </li>
-        <li>
-            <a href="#tab-categories" data-tab="categories">
-                <span class="icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                        <path d="M2 17l10 5 10-5"/>
-                        <path d="M2 12l10 5 10-5"/>
-                    </svg>
-                </span>
-                <span class="tooltip">Kategori</span>
-            </a>
-        </li>
-        <li>
-            <a href="#tab-articles" data-tab="articles">
-                <span class="icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                        <polyline points="14 2 14 8 20 8"/>
-                        <line x1="16" y1="13" x2="8" y2="13"/>
-                        <line x1="16" y1="17" x2="8" y2="17"/>
-                        <polyline points="10 9 9 9 8 9"/>
-                    </svg>
-                </span>
-                <span class="badge" id="article-count">0</span>
-                <span class="tooltip">Artikel</span>
-            </a>
-        </li>
-        <li>
-            <a href="#tab-banners" data-tab="banners">
-                <span class="icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                        <circle cx="8.5" cy="8.5" r="1.5"/>
-                        <polyline points="21 15 16 10 5 21"/>
-                    </svg>
-                </span>
-                <span class="badge" id="banner-count">0</span>
-                <span class="tooltip">Banner</span>
-            </a>
-        </li>
-        <li>
-            <a href="#tab-orders" data-tab="orders">
-                <span class="icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                        <polyline points="14 2 14 8 20 8"/>
-                        <line x1="16" y1="13" x2="8" y2="13"/>
-                        <line x1="16" y1="17" x2="8" y2="17"/>
-                        <polyline points="10 9 9 9 8 9"/>
-                    </svg>
-                </span>
-                <span class="badge" id="order-count">0</span>
-                <span class="tooltip">Pesanan</span>
-            </a>
-        </li>
-        <li>
-            <a href="#tab-settings" data-tab="settings">
-                <span class="icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="3"/>
-                        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
-                    </svg>
-                </span>
-                <span class="tooltip">Pengaturan</span>
-            </a>
-        </li>
-        <li>
-            <a href="#tab-backup" data-tab="backup">
-                <span class="icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                        <polyline points="7 10 12 15 17 10"/>
-                        <line x1="12" y1="15" x2="12" y2="3"/>
-                    </svg>
-                </span>
-                <span class="tooltip">Backup</span>
-            </a>
-        </li>
-    </ul>
-</aside>
+                </div>
+            </div>
+            
+            <!-- NAV MENU - HANYA IKON SVG -->
+            <ul class="nav-menu">
+                <li>
+                    <a href="#tab-dashboard" class="active" data-tab="dashboard">
+                        <span class="icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="7" height="7" rx="1"/>
+                                <rect x="14" y="3" width="7" height="7" rx="1"/>
+                                <rect x="3" y="14" width="7" height="7" rx="1"/>
+                                <rect x="14" y="14" width="7" height="7" rx="1"/>
+                            </svg>
+                        </span>
+                        <span class="tooltip">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#tab-products" data-tab="products">
+                        <span class="icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                                <line x1="3" y1="6" x2="21" y2="6"/>
+                                <path d="M16 10a4 4 0 0 1-8 0"/>
+                            </svg>
+                        </span>
+                        <span class="badge" id="product-count">0</span>
+                        <span class="tooltip">Produk</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#tab-categories" data-tab="categories">
+                        <span class="icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                <path d="M2 17l10 5 10-5"/>
+                                <path d="M2 12l10 5 10-5"/>
+                            </svg>
+                        </span>
+                        <span class="tooltip">Kategori</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#tab-articles" data-tab="articles">
+                        <span class="icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                                <line x1="16" y1="13" x2="8" y2="13"/>
+                                <line x1="16" y1="17" x2="8" y2="17"/>
+                                <polyline points="10 9 9 9 8 9"/>
+                            </svg>
+                        </span>
+                        <span class="badge" id="article-count">0</span>
+                        <span class="tooltip">Artikel</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#tab-banners" data-tab="banners">
+                        <span class="icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                <circle cx="8.5" cy="8.5" r="1.5"/>
+                                <polyline points="21 15 16 10 5 21"/>
+                            </svg>
+                        </span>
+                        <span class="badge" id="banner-count">0</span>
+                        <span class="tooltip">Banner</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#tab-orders" data-tab="orders">
+                        <span class="icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                                <line x1="16" y1="13" x2="8" y2="13"/>
+                                <line x1="16" y1="17" x2="8" y2="17"/>
+                                <polyline points="10 9 9 9 8 9"/>
+                            </svg>
+                        </span>
+                        <span class="badge" id="order-count">0</span>
+                        <span class="tooltip">Pesanan</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#tab-settings" data-tab="settings">
+                        <span class="icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="3"/>
+                                <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                            </svg>
+                        </span>
+                        <span class="tooltip">Pengaturan</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#tab-backup" data-tab="backup">
+                        <span class="icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="7 10 12 15 17 10"/>
+                                <line x1="12" y1="15" x2="12" y2="3"/>
+                            </svg>
+                        </span>
+                        <span class="tooltip">Backup</span>
+                    </a>
+                </li>
+            </ul>
+        </aside>
         
         <!-- MAIN CONTENT -->
         <main class="main-content">
@@ -1170,7 +1102,7 @@
                     <p id="page-subtitle">Ringkasan aktivitas toko Anda</p>
                 </div>
                 <div class="topbar-actions">
-                    <button class="btn btn-view" onclick="window.open('toko-online.html', '_blank')">
+                    <button class="btn btn-view" onclick="window.open('index.html', '_blank')">
                         👁️ Lihat Toko
                     </button>
                     <button class="btn btn-outline" id="btn-refresh" title="Refresh data">🔄 Refresh</button>
@@ -1408,64 +1340,135 @@
                     
                     <form id="settings-form" onsubmit="saveSettings(event)">
                         <div class="form-grid">
+                            <!-- LOGO -->
                             <div class="form-group full-width">
-                                <label>Logo Toko (URL gambar)</label>
+                                <label>🖼️ Logo Toko (URL gambar)</label>
                                 <input type="text" id="setting-logo" placeholder="https://example.com/logo.png" />
+                                <small style="color:#888;font-size:12px;">Ukuran ideal: 300 x 80 px</small>
                             </div>
                             
+                            <!-- NAMA & DESKRIPSI -->
                             <div class="form-group">
-                                <label>Nama Toko <span class="required">*</span></label>
+                                <label>📝 Nama Toko <span class="required">*</span></label>
                                 <input type="text" id="setting-siteName" placeholder="TeslaSmart" required />
                             </div>
                             
                             <div class="form-group">
-                                <label>Deskripsi Toko</label>
+                                <label>📝 Deskripsi Toko</label>
                                 <input type="text" id="setting-siteDescription" placeholder="Deskripsi singkat toko" />
                             </div>
                             
+                            <!-- KONTAK -->
                             <div class="form-group">
-                                <label>No WhatsApp <span class="required">*</span></label>
+                                <label>📱 No WhatsApp <span class="required">*</span></label>
                                 <input type="text" id="setting-whatsapp" placeholder="+6285218483129" required />
                             </div>
                             
                             <div class="form-group">
-                                <label>Email Toko</label>
+                                <label>✉️ Email Toko</label>
                                 <input type="email" id="setting-email" placeholder="admin@teslasmart.com" />
                             </div>
                             
+                            <!-- ALAMAT -->
                             <div class="form-group full-width">
-                                <label>Alamat Toko</label>
+                                <label>📍 Alamat Toko</label>
                                 <textarea id="setting-address" rows="2" placeholder="Jln. Prambanan No.1 Klaten, Jawa Tengah"></textarea>
                             </div>
                             
+                            <!-- GOOGLE MAPS -->
                             <div class="form-group full-width">
-                                <label>Link Google Maps (Embed URL)</label>
+                                <label>🗺️ Link Google Maps (Embed URL)</label>
                                 <input type="text" id="setting-mapsLink" placeholder="https://www.google.com/maps/embed?pb=..." />
                                 <small style="color:#888;font-size:12px;">Dapatkan link embed dari Google Maps → Bagikan → Embed peta</small>
                             </div>
                             
+                            <!-- ===== BANNER HERO ===== -->
+                            <div class="form-group full-width" style="border-top:2px solid #f0f0f0;padding-top:15px;margin-top:10px;">
+                                <label>🖼️ Gambar Banner Background (Hero)</label>
+                                <input type="text" id="setting-banner-bg" placeholder="https://example.com/banner-1200x300.jpg" />
+                                <small style="color:#888;font-size:12px;display:block;margin-top:4px;line-height:1.6;">
+                                    📐 <strong>Ukuran ideal:</strong> 1200 x 300 px (Desktop) | 768 x 200 px (Tablet) | 480 x 150 px (Mobile)<br />
+                                    🎯 <strong>Rasio:</strong> 4:1 (lebar:tinggi)
+                                </small>
+                                <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;">
+                                    <button type="button" class="btn btn-sm btn-outline" onclick="document.getElementById('banner-bg-input').click()">📤 Upload Gambar</button>
+                                    <input type="file" id="banner-bg-input" accept="image/*" style="display:none" onchange="uploadBannerBg(event)" />
+                                    <button type="button" class="btn btn-sm btn-danger" onclick="document.getElementById('setting-banner-bg').value=''; document.getElementById('banner-bg-preview').style.display='none'; showToast('🗑️ Gambar banner dihapus', 'warning')">🗑️ Hapus</button>
+                                </div>
+                                <div id="banner-bg-preview" style="margin-top:10px;display:none;border-radius:8px;overflow:hidden;border:2px solid #e0e0e0;">
+                                    <img id="banner-bg-preview-img" src="" alt="Preview Banner" style="width:100%;max-height:300px;object-fit:cover;display:block;" />
+                                    <div style="padding:6px 12px;background:#f8f9fa;font-size:11px;color:#888;text-align:center;">
+                                        Preview Banner (ukuran sebenarnya akan menyesuaikan layar)
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- JUDUL HERO -->
                             <div class="form-group">
-                                <label>Teks "Powered by"</label>
+                                <label>📝 Judul Hero Banner</label>
+                                <input type="text" id="setting-hero-title" placeholder="Selamat Datang di TeslaSmart" />
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>📝 Subjudul Hero Banner</label>
+                                <input type="text" id="setting-hero-subtitle" placeholder="Temukan berbagai produk berkualitas..." />
+                            </div>
+                            
+                            <!-- ===== MEDIA SOSIAL ===== -->
+                            <div class="form-group full-width" style="border-top:2px solid #f0f0f0;padding-top:15px;margin-top:10px;">
+                                <label style="font-size:16px;font-weight:700;color:#1c5d69;">🌐 Media Sosial</label>
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label>🛍️ Shopee</label>
+                                        <input type="text" id="setting-shopee" placeholder="https://shopee.co.id/..." />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>🛒 Tokopedia</label>
+                                        <input type="text" id="setting-tokopedia" placeholder="https://tokopedia.com/..." />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>🎵 TikTok</label>
+                                        <input type="text" id="setting-tiktok" placeholder="https://tiktok.com/..." />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>📷 Instagram</label>
+                                        <input type="text" id="setting-instagram" placeholder="https://instagram.com/..." />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>📘 Facebook</label>
+                                        <input type="text" id="setting-facebook" placeholder="https://facebook.com/..." />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>▶️ YouTube</label>
+                                        <input type="text" id="setting-youtube" placeholder="https://youtube.com/..." />
+                                    </div>
+                                </div>
+                                <small style="color:#888;font-size:12px;">Masukkan link lengkap media sosial Anda. Kosongkan jika tidak digunakan.</small>
+                            </div>
+                            
+                            <!-- ===== FOOTER ===== -->
+                            <div class="form-group">
+                                <label>📝 Teks "Powered by"</label>
                                 <input type="text" id="setting-poweredText" placeholder="Powered by : TeslaSmart" />
                             </div>
                             
                             <div class="form-group">
-                                <label>Link "Powered by"</label>
+                                <label>🔗 Link "Powered by"</label>
                                 <input type="text" id="setting-poweredLink" placeholder="https://teslasmart-online-shop.my.id" />
                             </div>
                             
+                            <!-- CHAT GREETING -->
                             <div class="form-group full-width">
-                                <label>Pesan Sapaan Chat WhatsApp</label>
+                                <label>💬 Pesan Sapaan Chat WhatsApp</label>
                                 <input type="text" id="setting-chatGreeting" placeholder="Hello, Ada yang ingin ditanyakan?" />
                             </div>
                             
-                            <!-- ====== INI YANG DITAMBAHKAN: GANTI PASSWORD ====== -->
+                            <!-- ===== GANTI PASSWORD ===== -->
                             <div class="form-group full-width" style="border-top:2px solid #f0f0f0;padding-top:15px;margin-top:5px;">
                                 <label style="font-size:16px;color:#1c5d69;">🔑 Ganti Password Admin</label>
                                 <input type="password" id="setting-password" placeholder="Masukkan password baru..." />
                                 <small style="color:#888;font-size:12px;">Kosongkan jika tidak ingin mengubah password</small>
                             </div>
-                            <!-- ====== END GANTI PASSWORD ====== -->
                         </div>
                         
                         <div class="form-actions">
@@ -1543,6 +1546,44 @@
         const DEFAULT_PASSWORD = 'admin123';
         const STORAGE_PREFIX = 'teslasmart_';
         
+        const DEFAULT_DATA = {
+            settings: {
+                siteName: 'TeslaSmart',
+                siteDescription: 'Toko Online Terbaik. Desain Keren, Fitur Melimpah.',
+                logo: 'https://via.placeholder.com/300x80/1c5d69/fff?text=TeslaSmart',
+                whatsapp: '+6285218483129',
+                email: 'admin@teslasmart.com',
+                address: 'Jln. Prambanan No.1 Klaten, Jawa Tengah 313354',
+                mapsLink: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.0!2d110.5!3d-7.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zN8KwMzAnMDAuMCJTIDExMMKwMzAnMDAuMCJF!5e0!3m2!1sid!2sid!4v1234567890',
+                poweredText: 'Powered by : TeslaSmart',
+                poweredLink: 'https://teslasmart-online-shop.my.id',
+                chatGreeting: 'Hello, Ada yang ingin ditanyakan?',
+                bannerBg: 'https://via.placeholder.com/1200x300/1c5d69/fff?text=TeslaSmart',
+                heroTitle: 'Selamat Datang di TeslaSmart',
+                heroSubtitle: 'Temukan berbagai produk berkualitas dengan harga terbaik',
+                shopee: '#',
+                tokopedia: '#',
+                tiktok: '#',
+                instagram: '#',
+                facebook: '#',
+                youtube: '#'
+            },
+            categories: [
+                { id: 'cat1', name: 'Furniture', icon: 'https://www.svgrepo.com/show/401027/belongings-chair-drawer-furniture-households-interior.svg' },
+                { id: 'cat2', name: 'Fashion', icon: 'https://www.svgrepo.com/show/317255/chanel-clothing-fashion-national-culture-paris.svg' },
+                { id: 'cat3', name: 'Sepatu', icon: 'https://www.svgrepo.com/show/480660/sports-shoes-1.svg' },
+                { id: 'cat4', name: 'Elektronik', icon: 'https://www.svgrepo.com/show/447833/tv.svg' },
+                { id: 'cat5', name: 'Arloji', icon: 'https://www.svgrepo.com/show/423555/watch.svg' },
+                { id: 'cat6', name: 'Laptop', icon: 'https://www.svgrepo.com/show/523485/laptop-minimalistic.svg' },
+                { id: 'cat7', name: 'Handphone', icon: 'https://www.svgrepo.com/show/435906/mobile.svg' },
+                { id: 'cat8', name: 'Promo', icon: 'https://www.svgrepo.com/show/532400/badge-percent.svg' }
+            ],
+            products: [],
+            banners: [],
+            articles: [],
+            orders: []
+        };
+        
         // ============================================
         // DATABASE HELPER
         // ============================================
@@ -1560,7 +1601,7 @@
                 const result = {};
                 keys.forEach(key => {
                     const val = this.get(key);
-                    result[key] = val !== null ? val : [];
+                    result[key] = val !== null ? val : (DEFAULT_DATA[key] || []);
                 });
                 return result;
             },
@@ -1570,35 +1611,7 @@
                 });
             },
             reset: function() {
-                const defaults = {
-                    settings: {
-                        siteName: 'TeslaSmart',
-                        siteDescription: 'Toko Online Terbaik. Desain Keren, Fitur Melimpah.',
-                        logo: 'https://via.placeholder.com/300x80/1c5d69/fff?text=TeslaSmart',
-                        whatsapp: '+6285218483129',
-                        email: 'admin@teslasmart.com',
-                        address: 'Jln. Prambanan No.1 Klaten, Jawa Tengah 313354',
-                        mapsLink: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.0!2d110.5!3d-7.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zN8KwMzAnMDAuMCJTIDExMMKwMzAnMDAuMCJF!5e0!3m2!1sid!2sid!4v1234567890',
-                        poweredText: 'Powered by : TeslaSmart',
-                        poweredLink: 'https://teslasmart-online-shop.my.id',
-                        chatGreeting: 'Hello, Ada yang ingin ditanyakan?'
-                    },
-                    categories: [
-                        { id: 'cat1', name: 'Furniture', icon: 'https://www.svgrepo.com/show/401027/belongings-chair-drawer-furniture-households-interior.svg' },
-                        { id: 'cat2', name: 'Fashion', icon: 'https://www.svgrepo.com/show/317255/chanel-clothing-fashion-national-culture-paris.svg' },
-                        { id: 'cat3', name: 'Sepatu', icon: 'https://www.svgrepo.com/show/480660/sports-shoes-1.svg' },
-                        { id: 'cat4', name: 'Elektronik', icon: 'https://www.svgrepo.com/show/447833/tv.svg' },
-                        { id: 'cat5', name: 'Arloji', icon: 'https://www.svgrepo.com/show/423555/watch.svg' },
-                        { id: 'cat6', name: 'Laptop', icon: 'https://www.svgrepo.com/show/523485/laptop-minimalistic.svg' },
-                        { id: 'cat7', name: 'Handphone', icon: 'https://www.svgrepo.com/show/435906/mobile.svg' },
-                        { id: 'cat8', name: 'Promo', icon: 'https://www.svgrepo.com/show/532400/badge-percent.svg' }
-                    ],
-                    products: [],
-                    banners: [],
-                    articles: [],
-                    orders: []
-                };
-                this.saveAll(defaults);
+                this.saveAll(DEFAULT_DATA);
             }
         };
         
@@ -1885,6 +1898,26 @@
             document.getElementById('setting-poweredLink').value = settings.poweredLink || '';
             document.getElementById('setting-chatGreeting').value = settings.chatGreeting || '';
             document.getElementById('setting-password').value = '';
+            
+            // Banner Hero
+            document.getElementById('setting-banner-bg').value = settings.bannerBg || '';
+            document.getElementById('setting-hero-title').value = settings.heroTitle || '';
+            document.getElementById('setting-hero-subtitle').value = settings.heroSubtitle || '';
+            
+            if (settings.bannerBg) {
+                const preview = document.getElementById('banner-bg-preview');
+                const img = document.getElementById('banner-bg-preview-img');
+                img.src = settings.bannerBg;
+                preview.style.display = 'block';
+            }
+            
+            // Media Sosial
+            document.getElementById('setting-shopee').value = settings.shopee || '';
+            document.getElementById('setting-tokopedia').value = settings.tokopedia || '';
+            document.getElementById('setting-tiktok').value = settings.tiktok || '';
+            document.getElementById('setting-instagram').value = settings.instagram || '';
+            document.getElementById('setting-facebook').value = settings.facebook || '';
+            document.getElementById('setting-youtube').value = settings.youtube || '';
         }
         
         function updateCounts() {
@@ -2249,6 +2282,27 @@
         }
         
         // ============================================
+        // UPLOAD BANNER BACKGROUND
+        // ============================================
+        
+        function uploadBannerBg(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const preview = document.getElementById('banner-bg-preview');
+                const img = document.getElementById('banner-bg-preview-img');
+                img.src = e.target.result;
+                preview.style.display = 'block';
+                document.getElementById('setting-banner-bg').value = e.target.result;
+                showToast('✅ Gambar berhasil diupload! Klik "Simpan Pengaturan" untuk menyimpan.', 'success');
+            };
+            reader.readAsDataURL(file);
+            event.target.value = '';
+        }
+        
+        // ============================================
         // ORDERS
         // ============================================
         
@@ -2298,7 +2352,16 @@
                 mapsLink: document.getElementById('setting-mapsLink').value.trim(),
                 poweredText: document.getElementById('setting-poweredText').value.trim(),
                 poweredLink: document.getElementById('setting-poweredLink').value.trim(),
-                chatGreeting: document.getElementById('setting-chatGreeting').value.trim()
+                chatGreeting: document.getElementById('setting-chatGreeting').value.trim(),
+                bannerBg: document.getElementById('setting-banner-bg').value.trim(),
+                heroTitle: document.getElementById('setting-hero-title').value.trim(),
+                heroSubtitle: document.getElementById('setting-hero-subtitle').value.trim(),
+                shopee: document.getElementById('setting-shopee').value.trim(),
+                tokopedia: document.getElementById('setting-tokopedia').value.trim(),
+                tiktok: document.getElementById('setting-tiktok').value.trim(),
+                instagram: document.getElementById('setting-instagram').value.trim(),
+                facebook: document.getElementById('setting-facebook').value.trim(),
+                youtube: document.getElementById('setting-youtube').value.trim()
             };
             
             if (!settings.siteName) {
@@ -2313,13 +2376,11 @@
             
             DB.set('settings', settings);
             
-            // ====== GANTI PASSWORD ======
             const newPassword = document.getElementById('setting-password').value.trim();
             if (newPassword) {
                 DB.set('adminPassword', newPassword);
                 showToast('🔑 Password admin berhasil diubah!', 'success');
             }
-            // ====== END GANTI PASSWORD ======
             
             showToast('✅ Pengaturan berhasil disimpan!', 'success');
             triggerUpdate();
