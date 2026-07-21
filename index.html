@@ -143,7 +143,6 @@
             box-shadow: 2px 0 15px rgba(0,0,0,0.1);
         }
         
-        /* BRAND - IKON KERANJANG */
         .sidebar .brand {
             padding: 0 0 20px 0;
             border-bottom: 1px solid rgba(255,255,255,0.15);
@@ -177,24 +176,17 @@
             stroke: #ffffff;
         }
         
-        /* SEMBUNYIKAN TEKS JUDUL */
         .sidebar .brand h2,
-        .sidebar .brand small {
-            display: none;
-        }
+        .sidebar .brand small { display: none; }
         
-        /* NAVIGASI MENU */
         .sidebar .nav-menu {
             list-style: none;
             padding: 0 10px;
             margin: 0;
         }
         
-        .sidebar .nav-menu li {
-            margin-bottom: 4px;
-        }
+        .sidebar .nav-menu li { margin-bottom: 4px; }
         
-        /* ===== TOMBOL DENGAN SVG IKON ===== */
         .sidebar .nav-menu li a {
             display: flex;
             align-items: center;
@@ -207,7 +199,6 @@
             position: relative;
         }
         
-        /* IKON SVG */
         .sidebar .nav-menu li a .icon {
             display: flex;
             align-items: center;
@@ -226,14 +217,12 @@
             stroke-linejoin: round;
         }
         
-        /* HOVER - Background & Geser */
         .sidebar .nav-menu li a:hover {
             background: rgba(255,255,255,0.15);
             color: #ffffff;
             transform: translateX(4px);
         }
         
-        /* ACTIVE - Background & Garis */
         .sidebar .nav-menu li a.active {
             background: rgba(255,255,255,0.18);
             color: #ffffff;
@@ -241,7 +230,6 @@
             transform: translateX(0);
         }
         
-        /* TOOLTIP - Muncul saat hover */
         .sidebar .nav-menu li a .tooltip {
             position: absolute;
             left: 75px;
@@ -277,7 +265,6 @@
             left: 85px;
         }
         
-        /* BADGE - Jumlah di pojok ikon */
         .sidebar .nav-menu li a .badge {
             position: absolute;
             top: -4px;
@@ -293,10 +280,7 @@
             border: 2px solid #1c5d69;
         }
         
-        /* SEMBUNYIKAN TEKS MENU */
-        .sidebar .nav-menu li a .menu-text {
-            display: none;
-        }
+        .sidebar .nav-menu li a .menu-text { display: none; }
         
         /* ============================================
            RESPONSIVE SIDEBAR
@@ -363,9 +347,7 @@
                 height: 16px;
             }
             
-            .sidebar .nav-menu li a .tooltip {
-                display: none;
-            }
+            .sidebar .nav-menu li a .tooltip { display: none; }
         }
         
         /* ============================================
@@ -473,7 +455,7 @@
         }
         .topbar .topbar-actions .btn-view:hover { background: #2980b9; }
         
-        /* ---------- STATS CARDS - 2x2 Grid di Mobile ---------- */
+        /* ---------- STATS CARDS ---------- */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -972,7 +954,6 @@
         
         <!-- SIDEBAR -->
         <aside class="sidebar">
-            <!-- BRAND - HANYA IKON KERANJANG -->
             <div class="brand">
                 <div class="logo-icon">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -983,7 +964,6 @@
                 </div>
             </div>
             
-            <!-- NAV MENU - HANYA IKON SVG -->
             <ul class="nav-menu">
                 <li>
                     <a href="#tab-dashboard" class="active" data-tab="dashboard">
@@ -1105,7 +1085,7 @@
                     <button class="btn btn-view" onclick="window.open('toko-online.html', '_blank')">
                         👁️ Lihat Toko
                     </button>
-                    <button class="btn btn-outline" id="btn-refresh" title="Refresh data">🔄 Refresh</button>
+                    <button class="btn btn-outline" id="btn-refresh">🔄 Refresh</button>
                     <button class="btn btn-danger" id="btn-logout">🚪 Keluar</button>
                 </div>
             </div>
@@ -1330,24 +1310,26 @@
             </div>
             
             <!-- ========================================== -->
-            <!-- TAB: SETTINGS -->
+            <!-- TAB: SETTINGS (LENGKAP) -->
             <!-- ========================================== -->
             <div class="tab-content" id="tab-settings">
                 <div class="panel">
                     <div class="panel-header">
                         <h4>⚙️ Pengaturan Toko</h4>
+                        <p style="font-size:13px;color:#888;">Kelola semua pengaturan toko Anda</p>
                     </div>
                     
                     <form id="settings-form" onsubmit="saveSettings(event)">
                         <div class="form-grid">
-                            <!-- LOGO -->
+                            
+                            <!-- ===== 1. LOGO ===== -->
                             <div class="form-group full-width">
                                 <label>🖼️ Logo Toko (URL gambar)</label>
                                 <input type="text" id="setting-logo" placeholder="https://example.com/logo.png" />
                                 <small style="color:#888;font-size:12px;">Ukuran ideal: 300 x 80 px</small>
                             </div>
                             
-                            <!-- NAMA & DESKRIPSI -->
+                            <!-- ===== 2-3. NAMA & DESKRIPSI ===== -->
                             <div class="form-group">
                                 <label>📝 Nama Toko <span class="required">*</span></label>
                                 <input type="text" id="setting-siteName" placeholder="TeslaSmart" required />
@@ -1355,66 +1337,41 @@
                             
                             <div class="form-group">
                                 <label>📝 Deskripsi Toko</label>
-                                <input type="text" id="setting-siteDescription" placeholder="Deskripsi singkat toko" />
+                                <input type="text" id="setting-siteDescription" placeholder="Toko Online Terbaik..." />
                             </div>
                             
-                            <!-- KONTAK -->
-                            <div class="form-group">
-                                <label>📱 No WhatsApp <span class="required">*</span></label>
-                                <input type="text" id="setting-whatsapp" placeholder="+6285218483129" required />
-                            </div>
-                            
-                            <div class="form-group">
-                                <label>✉️ Email Toko</label>
-                                <input type="email" id="setting-email" placeholder="admin@teslasmart.com" />
-                            </div>
-                            
-                            <!-- ALAMAT -->
-                            <div class="form-group full-width">
-                                <label>📍 Alamat Toko</label>
-                                <textarea id="setting-address" rows="2" placeholder="Jln. Prambanan No.1 Klaten, Jawa Tengah"></textarea>
-                            </div>
-                            
-                            <!-- GOOGLE MAPS -->
-                            <div class="form-group full-width">
-                                <label>🗺️ Link Google Maps (Embed URL)</label>
-                                <input type="text" id="setting-mapsLink" placeholder="https://www.google.com/maps/embed?pb=..." />
-                                <small style="color:#888;font-size:12px;">Dapatkan link embed dari Google Maps → Bagikan → Embed peta</small>
-                            </div>
-                            
-                            <!-- ===== BANNER HERO ===== -->
+                            <!-- ===== 4-9. HERO BANNER ===== -->
                             <div class="form-group full-width" style="border-top:2px solid #f0f0f0;padding-top:15px;margin-top:10px;">
-                                <label>🖼️ Gambar Banner Background (Hero)</label>
-                                <input type="text" id="setting-banner-bg" placeholder="https://example.com/banner-1200x300.jpg" />
-                                <small style="color:#888;font-size:12px;display:block;margin-top:4px;line-height:1.6;">
-                                    📐 <strong>Ukuran ideal:</strong> 1200 x 300 px (Desktop) | 768 x 200 px (Tablet) | 480 x 150 px (Mobile)<br />
-                                    🎯 <strong>Rasio:</strong> 4:1 (lebar:tinggi)
-                                </small>
-                                <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;">
-                                    <button type="button" class="btn btn-sm btn-outline" onclick="document.getElementById('banner-bg-input').click()">📤 Upload Gambar</button>
-                                    <input type="file" id="banner-bg-input" accept="image/*" style="display:none" onchange="uploadBannerBg(event)" />
-                                    <button type="button" class="btn btn-sm btn-danger" onclick="document.getElementById('setting-banner-bg').value=''; document.getElementById('banner-bg-preview').style.display='none'; showToast('🗑️ Gambar banner dihapus', 'warning')">🗑️ Hapus</button>
+                                <label style="font-size:16px;font-weight:700;color:#1c5d69;">🖼️ Hero Banner</label>
+                                
+                                <div class="form-group">
+                                    <label>Background Hero (URL Gambar)</label>
+                                    <input type="text" id="setting-hero-bg" placeholder="https://example.com/hero-bg.jpg" />
+                                    <small style="color:#888;font-size:12px;">Ukuran ideal: 1200 x 600 px</small>
                                 </div>
-                                <div id="banner-bg-preview" style="margin-top:10px;display:none;border-radius:8px;overflow:hidden;border:2px solid #e0e0e0;">
-                                    <img id="banner-bg-preview-img" src="" alt="Preview Banner" style="width:100%;max-height:300px;object-fit:cover;display:block;" />
-                                    <div style="padding:6px 12px;background:#f8f9fa;font-size:11px;color:#888;text-align:center;">
-                                        Preview Banner (ukuran sebenarnya akan menyesuaikan layar)
-                                    </div>
+                                
+                                <div class="form-group">
+                                    <label>Judul Hero - Kiri</label>
+                                    <input type="text" id="setting-hero-title-left" placeholder="TESLASMART" />
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Judul Hero - Kanan</label>
+                                    <input type="text" id="setting-hero-title-right" placeholder="TESLASMART" />
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Subjudul Hero</label>
+                                    <input type="text" id="setting-hero-subtitle" placeholder="Ini adalah toko online TeslaSmart..." />
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Teks Tombol WhatsApp</label>
+                                    <input type="text" id="setting-wa-button-text" placeholder="Hubungi Kami" />
                                 </div>
                             </div>
                             
-                            <!-- JUDUL HERO -->
-                            <div class="form-group">
-                                <label>📝 Judul Hero Banner</label>
-                                <input type="text" id="setting-hero-title" placeholder="Selamat Datang di TeslaSmart" />
-                            </div>
-                            
-                            <div class="form-group">
-                                <label>📝 Subjudul Hero Banner</label>
-                                <input type="text" id="setting-hero-subtitle" placeholder="Temukan berbagai produk berkualitas..." />
-                            </div>
-                            
-                            <!-- ===== MEDIA SOSIAL ===== -->
+                            <!-- ===== 10-15. MEDIA SOSIAL ===== -->
                             <div class="form-group full-width" style="border-top:2px solid #f0f0f0;padding-top:15px;margin-top:10px;">
                                 <label style="font-size:16px;font-weight:700;color:#1c5d69;">🌐 Media Sosial</label>
                                 <div class="form-grid">
@@ -1446,7 +1403,30 @@
                                 <small style="color:#888;font-size:12px;">Masukkan link lengkap media sosial Anda. Kosongkan jika tidak digunakan.</small>
                             </div>
                             
-                            <!-- ===== FOOTER ===== -->
+                            <!-- ===== 16-17. ALAMAT & EMAIL ===== -->
+                            <div class="form-group full-width">
+                                <label>📍 Alamat Toko</label>
+                                <textarea id="setting-address" rows="2" placeholder="Jln. Prambanan No.1 Klaten, Jawa Tengah 313354"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>✉️ Email Toko</label>
+                                <input type="email" id="setting-email" placeholder="teslasmartonlineshop@gmail.com" />
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>📱 No WhatsApp <span class="required">*</span></label>
+                                <input type="text" id="setting-whatsapp" placeholder="+6285218483129" required />
+                            </div>
+                            
+                            <!-- ===== 18. GOOGLE MAPS ===== -->
+                            <div class="form-group full-width">
+                                <label>🗺️ Link Google Maps (Embed URL)</label>
+                                <input type="text" id="setting-mapsLink" placeholder="https://www.google.com/maps/embed?pb=..." />
+                                <small style="color:#888;font-size:12px;">Dapatkan link embed dari Google Maps → Bagikan → Embed peta</small>
+                            </div>
+                            
+                            <!-- ===== 19-20. POWERED BY ===== -->
                             <div class="form-group">
                                 <label>📝 Teks "Powered by"</label>
                                 <input type="text" id="setting-poweredText" placeholder="Powered by : TeslaSmart" />
@@ -1457,18 +1437,19 @@
                                 <input type="text" id="setting-poweredLink" placeholder="https://teslasmart-online-shop.my.id" />
                             </div>
                             
-                            <!-- CHAT GREETING -->
+                            <!-- ===== 21. CHAT GREETING ===== -->
                             <div class="form-group full-width">
                                 <label>💬 Pesan Sapaan Chat WhatsApp</label>
                                 <input type="text" id="setting-chatGreeting" placeholder="Hello, Ada yang ingin ditanyakan?" />
                             </div>
                             
-                            <!-- ===== GANTI PASSWORD ===== -->
+                            <!-- ===== 22. GANTI PASSWORD ===== -->
                             <div class="form-group full-width" style="border-top:2px solid #f0f0f0;padding-top:15px;margin-top:5px;">
                                 <label style="font-size:16px;color:#1c5d69;">🔑 Ganti Password Admin</label>
                                 <input type="password" id="setting-password" placeholder="Masukkan password baru..." />
                                 <small style="color:#888;font-size:12px;">Kosongkan jika tidak ingin mengubah password</small>
                             </div>
+                            
                         </div>
                         
                         <div class="form-actions">
@@ -1549,18 +1530,22 @@
         const DEFAULT_DATA = {
             settings: {
                 siteName: 'TeslaSmart',
-                siteDescription: 'Toko Online Terbaik. Desain Keren, Fitur Melimpah.',
+                siteDescription: 'Toko Online Terbaik. Desain Keren, Fitur Melimpah, Gratis Hosting Selamanya.',
                 logo: 'https://via.placeholder.com/300x80/1c5d69/fff?text=TeslaSmart',
                 whatsapp: '+6285218483129',
-                email: 'admin@teslasmart.com',
-                address: 'Jln. Prambanan No.1 Klaten, Jawa Tengah 313354',
+                email: 'teslasmartonlineshop@gmail.com',
+                address: 'Jln. Prambanan No.1 Klaten.\nJawa Tengah 313354',
                 mapsLink: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.0!2d110.5!3d-7.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zN8KwMzAnMDAuMCJTIDExMMKwMzAnMDAuMCJF!5e0!3m2!1sid!2sid!4v1234567890',
                 poweredText: 'Powered by : TeslaSmart',
                 poweredLink: 'https://teslasmart-online-shop.my.id',
                 chatGreeting: 'Hello, Ada yang ingin ditanyakan?',
-                bannerBg: 'https://via.placeholder.com/1200x300/1c5d69/fff?text=TeslaSmart',
-                heroTitle: 'Selamat Datang di TeslaSmart',
-                heroSubtitle: 'Temukan berbagai produk berkualitas dengan harga terbaik',
+                // Hero
+                heroBg: 'https://via.placeholder.com/1200x600/1c5d69/fff?text=TeslaSmart',
+                heroTitleLeft: 'TESLASMART',
+                heroTitleRight: 'TESLASMART',
+                heroSubtitle: 'Ini adalah toko online TeslaSmart. Info Lebih Lanjut, klik tombol Whatsapp di bawah!',
+                waButtonText: 'Hubungi Kami',
+                // Media Sosial
                 shopee: '#',
                 tokopedia: '#',
                 tiktok: '#',
@@ -1569,7 +1554,7 @@
                 youtube: '#'
             },
             categories: [
-                { id: 'cat1', name: 'Furniture', icon: 'https://www.svgrepo.com/show/401027/belongings-chair-drawer-furniture-households-interior.svg' },
+                { id: 'cat1', name: 'Pulsa', icon: 'https://www.svgrepo.com/show/435906/mobile.svg' },
                 { id: 'cat2', name: 'Fashion', icon: 'https://www.svgrepo.com/show/317255/chanel-clothing-fashion-national-culture-paris.svg' },
                 { id: 'cat3', name: 'Sepatu', icon: 'https://www.svgrepo.com/show/480660/sports-shoes-1.svg' },
                 { id: 'cat4', name: 'Elektronik', icon: 'https://www.svgrepo.com/show/447833/tv.svg' },
@@ -1887,29 +1872,19 @@
         function renderSettings() {
             const settings = DB.get('settings') || {};
             
+            // Logo
             document.getElementById('setting-logo').value = settings.logo || '';
+            
+            // Nama & Deskripsi
             document.getElementById('setting-siteName').value = settings.siteName || '';
             document.getElementById('setting-siteDescription').value = settings.siteDescription || '';
-            document.getElementById('setting-whatsapp').value = settings.whatsapp || '';
-            document.getElementById('setting-email').value = settings.email || '';
-            document.getElementById('setting-address').value = settings.address || '';
-            document.getElementById('setting-mapsLink').value = settings.mapsLink || '';
-            document.getElementById('setting-poweredText').value = settings.poweredText || '';
-            document.getElementById('setting-poweredLink').value = settings.poweredLink || '';
-            document.getElementById('setting-chatGreeting').value = settings.chatGreeting || '';
-            document.getElementById('setting-password').value = '';
             
-            // Banner Hero
-            document.getElementById('setting-banner-bg').value = settings.bannerBg || '';
-            document.getElementById('setting-hero-title').value = settings.heroTitle || '';
+            // Hero
+            document.getElementById('setting-hero-bg').value = settings.heroBg || '';
+            document.getElementById('setting-hero-title-left').value = settings.heroTitleLeft || '';
+            document.getElementById('setting-hero-title-right').value = settings.heroTitleRight || '';
             document.getElementById('setting-hero-subtitle').value = settings.heroSubtitle || '';
-            
-            if (settings.bannerBg) {
-                const preview = document.getElementById('banner-bg-preview');
-                const img = document.getElementById('banner-bg-preview-img');
-                img.src = settings.bannerBg;
-                preview.style.display = 'block';
-            }
+            document.getElementById('setting-wa-button-text').value = settings.waButtonText || 'Hubungi Kami';
             
             // Media Sosial
             document.getElementById('setting-shopee').value = settings.shopee || '';
@@ -1918,6 +1893,24 @@
             document.getElementById('setting-instagram').value = settings.instagram || '';
             document.getElementById('setting-facebook').value = settings.facebook || '';
             document.getElementById('setting-youtube').value = settings.youtube || '';
+            
+            // Kontak & Alamat
+            document.getElementById('setting-whatsapp').value = settings.whatsapp || '';
+            document.getElementById('setting-email').value = settings.email || '';
+            document.getElementById('setting-address').value = settings.address || '';
+            
+            // Google Maps
+            document.getElementById('setting-mapsLink').value = settings.mapsLink || '';
+            
+            // Powered by
+            document.getElementById('setting-poweredText').value = settings.poweredText || '';
+            document.getElementById('setting-poweredLink').value = settings.poweredLink || '';
+            
+            // Chat Greeting
+            document.getElementById('setting-chatGreeting').value = settings.chatGreeting || '';
+            
+            // Password
+            document.getElementById('setting-password').value = '';
         }
         
         function updateCounts() {
@@ -2282,27 +2275,6 @@
         }
         
         // ============================================
-        // UPLOAD BANNER BACKGROUND
-        // ============================================
-        
-        function uploadBannerBg(event) {
-            const file = event.target.files[0];
-            if (!file) return;
-            
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const preview = document.getElementById('banner-bg-preview');
-                const img = document.getElementById('banner-bg-preview-img');
-                img.src = e.target.result;
-                preview.style.display = 'block';
-                document.getElementById('setting-banner-bg').value = e.target.result;
-                showToast('✅ Gambar berhasil diupload! Klik "Simpan Pengaturan" untuk menyimpan.', 'success');
-            };
-            reader.readAsDataURL(file);
-            event.target.value = '';
-        }
-        
-        // ============================================
         // ORDERS
         // ============================================
         
@@ -2343,27 +2315,45 @@
             event.preventDefault();
             
             const settings = {
+                // Logo
                 logo: document.getElementById('setting-logo').value.trim(),
+                
+                // Nama & Deskripsi
                 siteName: document.getElementById('setting-siteName').value.trim(),
                 siteDescription: document.getElementById('setting-siteDescription').value.trim(),
-                whatsapp: document.getElementById('setting-whatsapp').value.trim(),
-                email: document.getElementById('setting-email').value.trim(),
-                address: document.getElementById('setting-address').value.trim(),
-                mapsLink: document.getElementById('setting-mapsLink').value.trim(),
-                poweredText: document.getElementById('setting-poweredText').value.trim(),
-                poweredLink: document.getElementById('setting-poweredLink').value.trim(),
-                chatGreeting: document.getElementById('setting-chatGreeting').value.trim(),
-                bannerBg: document.getElementById('setting-banner-bg').value.trim(),
-                heroTitle: document.getElementById('setting-hero-title').value.trim(),
+                
+                // Hero
+                heroBg: document.getElementById('setting-hero-bg').value.trim(),
+                heroTitleLeft: document.getElementById('setting-hero-title-left').value.trim(),
+                heroTitleRight: document.getElementById('setting-hero-title-right').value.trim(),
                 heroSubtitle: document.getElementById('setting-hero-subtitle').value.trim(),
+                waButtonText: document.getElementById('setting-wa-button-text').value.trim(),
+                
+                // Media Sosial
                 shopee: document.getElementById('setting-shopee').value.trim(),
                 tokopedia: document.getElementById('setting-tokopedia').value.trim(),
                 tiktok: document.getElementById('setting-tiktok').value.trim(),
                 instagram: document.getElementById('setting-instagram').value.trim(),
                 facebook: document.getElementById('setting-facebook').value.trim(),
-                youtube: document.getElementById('setting-youtube').value.trim()
+                youtube: document.getElementById('setting-youtube').value.trim(),
+                
+                // Kontak & Alamat
+                whatsapp: document.getElementById('setting-whatsapp').value.trim(),
+                email: document.getElementById('setting-email').value.trim(),
+                address: document.getElementById('setting-address').value.trim(),
+                
+                // Google Maps
+                mapsLink: document.getElementById('setting-mapsLink').value.trim(),
+                
+                // Powered by
+                poweredText: document.getElementById('setting-poweredText').value.trim(),
+                poweredLink: document.getElementById('setting-poweredLink').value.trim(),
+                
+                // Chat Greeting
+                chatGreeting: document.getElementById('setting-chatGreeting').value.trim()
             };
             
+            // Validasi
             if (!settings.siteName) {
                 showToast('❌ Nama toko harus diisi!', 'error');
                 return;
@@ -2376,6 +2366,7 @@
             
             DB.set('settings', settings);
             
+            // Ganti Password
             const newPassword = document.getElementById('setting-password').value.trim();
             if (newPassword) {
                 DB.set('adminPassword', newPassword);
