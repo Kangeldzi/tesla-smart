@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title id="meta-title">TeslaSmart - Toko Online</title>
     <meta name="description" id="meta-description" content="Toko Online Terbaik dengan berbagai produk berkualitas." />
     
@@ -14,15 +14,13 @@
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet" />
     
     <style>
         /* ============================================
-           CSS LENGKAP - Style Toko TeslaSmart
+           CSS TOKO - TESLASMART
            ============================================ */
         
-        /* ---------- RESET & BASE ---------- */
         * {
             margin: 0;
             padding: 0;
@@ -35,22 +33,12 @@
             color: #333;
             font-size: 16px;
             line-height: 1.575;
+            overflow-x: hidden;
         }
         
-        a {
-            text-decoration: none;
-            color: #333;
-        }
-        
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        .clear {
-            clear: both;
-        }
+        a { text-decoration: none; color: #333; }
+        img { max-width: 100%; height: auto; display: block; }
+        .clear { clear: both; }
         
         /* ---------- HEADER ---------- */
         #header-utama {
@@ -138,12 +126,76 @@
             height: 28px;
         }
         
+        /* ============================================
+           BANNER HERO (BACKGROUND)
+           ============================================ */
+        .banner-hero {
+            width: 100%;
+            max-width: 1050px;
+            margin: 85px auto 20px;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .banner-hero .overlay {
+            background: rgba(0,0,0,0.35);
+            padding: 40px 30px;
+            text-align: center;
+            color: #fff;
+            border-radius: 12px;
+            width: 100%;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .banner-hero .overlay h1 {
+            font-size: 36px;
+            font-weight: 800;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            margin-bottom: 10px;
+        }
+        
+        .banner-hero .overlay p {
+            font-size: 18px;
+            opacity: 0.95;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+        }
+        
+        .banner-hero .overlay .btn-hero {
+            margin-top: 20px;
+            padding: 12px 35px;
+            background: #1c5d69;
+            color: #fff;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+        
+        .banner-hero .overlay .btn-hero:hover {
+            background: #143f48;
+            transform: scale(1.05);
+        }
+        
         /* ---------- SLIDER ---------- */
         .slider {
             position: relative;
             width: 100%;
             max-width: 1050px;
-            margin: 85px auto 20px;
+            margin: 20px auto;
             overflow: hidden;
             border-radius: 12px;
         }
@@ -176,10 +228,7 @@
             transition: background 0.3s;
         }
         
-        .slider .slider-btn:hover {
-            background: rgba(0,0,0,0.8);
-        }
-        
+        .slider .slider-btn:hover { background: rgba(0,0,0,0.8); }
         .slider .prev { left: 10px; }
         .slider .next { right: 10px; }
         
@@ -227,9 +276,7 @@
             border-radius: 10px;
         }
         
-        .category3 .items:hover {
-            transform: translateY(-3px);
-        }
+        .category3 .items:hover { transform: translateY(-3px); }
         
         .category3 .items .img {
             width: 50px;
@@ -242,15 +289,8 @@
             transition: 0.3s;
         }
         
-        .category3 .items .img:hover {
-            border: 2px solid #ff2b56;
-        }
-        
-        .category3 .items .p {
-            font-size: 12px;
-            font-weight: 500;
-            color: #1c5d69;
-        }
+        .category3 .items .img:hover { border: 2px solid #ff2b56; }
+        .category3 .items .p { font-size: 12px; font-weight: 500; color: #1c5d69; }
         
         /* ---------- PRODUCT GRID ---------- */
         .labelbox {
@@ -341,14 +381,8 @@
             min-height: 40px;
         }
         
-        .post-title a {
-            color: #1c5d69;
-            transition: 0.3s;
-        }
-        
-        .post-title a:hover {
-            color: #ff2b56;
-        }
+        .post-title a { color: #1c5d69; transition: 0.3s; }
+        .post-title a:hover { color: #ff2b56; }
         
         .harga-produk {
             display: flex;
@@ -370,10 +404,7 @@
             text-decoration: line-through;
         }
         
-        .harga-produk .keterangan2 {
-            font-size: 12px;
-            color: #888;
-        }
+        .harga-produk .keterangan2 { font-size: 12px; color: #888; }
         
         .tombol-detail-beli {
             display: flex;
@@ -381,13 +412,8 @@
             margin-top: 10px;
         }
         
-        .tombol-detail-beli .lihat-detail {
-            flex: 1;
-        }
-        
-        .tombol-detail-beli .beli-plus {
-            flex: 1;
-        }
+        .tombol-detail-beli .lihat-detail { flex: 1; }
+        .tombol-detail-beli .beli-plus { flex: 1; }
         
         .detail-wrap, .beli-wrap {
             display: block;
@@ -405,23 +431,15 @@
             color: #636363;
         }
         
-        .detail-wrap:hover {
-            background: #d5d0c4;
-        }
+        .detail-wrap:hover { background: #d5d0c4; }
         
         .beli-wrap {
             background: #1c5d69;
             color: #fff;
         }
         
-        .beli-wrap:hover {
-            background: #143f48;
-        }
-        
-        .beli-wrap a, .detail-wrap a {
-            color: inherit;
-            display: block;
-        }
+        .beli-wrap:hover { background: #143f48; }
+        .beli-wrap a, .detail-wrap a { color: inherit; display: block; }
         
         /* ---------- ARTICLES SECTION ---------- */
         .articles-section {
@@ -476,6 +494,67 @@
             overflow: hidden;
         }
         
+        /* ============================================
+           MEDIA SOSIAL
+           ============================================ */
+        .social-section {
+            padding: 30px 20px;
+            max-width: 1050px;
+            margin: 0 auto;
+        }
+        
+        .social-section h3 {
+            font-size: 22px;
+            font-weight: 800;
+            color: #1c5d69;
+            margin: 0 0 18px 0;
+            padding: 0 10px;
+            text-align: center;
+        }
+        
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 14px;
+            padding: 0 10px;
+        }
+        
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 14px;
+            border-radius: 12px;
+            background: rgba(234, 234, 234, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 2px solid rgba(255, 255, 255, 0.18);
+            color: #1c5d69;
+            font-weight: 700;
+            font-size: 14px;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+        
+        .social-btn svg {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+        
+        .social-btn:hover {
+            background: #1c5d69;
+            color: #ffffff;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(28, 93, 105, 0.25);
+        }
+        
+        .social-btn:hover svg {
+            filter: brightness(0) invert(1);
+        }
+        
         /* ---------- FOOTER ---------- */
         .st-footer {
             background: #faf7eb;
@@ -527,9 +606,7 @@
             transition: 0.3s;
         }
         
-        .st-footer .footer-col ul li a:hover {
-            color: #1c5d69;
-        }
+        .st-footer .footer-col ul li a:hover { color: #1c5d69; }
         
         .st-footer .map-frame {
             width: 100%;
@@ -539,14 +616,8 @@
             border: 2px solid #ddd;
         }
         
-        .st-footer .contact-line {
-            margin: 4px 0;
-        }
-        
-        .st-footer .contact-line .label {
-            font-weight: 600;
-            color: #1c5d69;
-        }
+        .st-footer .contact-line { margin: 4px 0; }
+        .st-footer .contact-line .label { font-weight: 600; color: #1c5d69; }
         
         /* ---------- KREDIT ---------- */
         #halaman-kredit {
@@ -572,9 +643,7 @@
             transition: 0.3s;
         }
         
-        #content-kredit a:hover {
-            color: #fff;
-        }
+        #content-kredit a:hover { color: #fff; }
         
         /* ---------- WHATSAPP CHAT ---------- */
         .chatButton {
@@ -698,11 +767,22 @@
             cursor: pointer;
         }
         
-        .chatBox .chatStart:hover {
-            background: #3aa83a;
+        .chatBox .chatStart:hover { background: #3aa83a; }
+        
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 992px) {
+            .banner-hero { min-height: 250px; }
+            .banner-hero .overlay { min-height: 250px; }
+            .banner-hero .overlay h1 { font-size: 28px; }
+            .banner-hero .overlay p { font-size: 16px; }
+            
+            .social-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
         }
         
-        /* ---------- RESPONSIVE ---------- */
         @media (max-width: 768px) {
             #header-content {
                 padding: 0 12px;
@@ -714,13 +794,9 @@
                 max-width: 120px;
             }
             
-            #header .logo h1 {
-                font-size: 16px;
-            }
+            #header .logo h1 { font-size: 16px; }
             
-            .live-search {
-                width: 45%;
-            }
+            .live-search { width: 45%; }
             
             .live-search .search {
                 font-size: 12px;
@@ -734,14 +810,22 @@
                 right: 3px;
             }
             
-            .slider .slides img {
-                height: 200px;
+            .banner-hero {
+                min-height: 200px;
+                margin-top: 72px;
             }
             
-            .slider .slider-btn {
-                padding: 8px 12px;
-                font-size: 16px;
+            .banner-hero .overlay {
+                min-height: 200px;
+                padding: 20px;
             }
+            
+            .banner-hero .overlay h1 { font-size: 22px; }
+            .banner-hero .overlay p { font-size: 14px; }
+            .banner-hero .overlay .btn-hero { padding: 10px 25px; font-size: 13px; }
+            
+            .slider .slides img { height: 250px; }
+            .slider .slider-btn { padding: 8px 12px; font-size: 16px; }
             
             #content-wrap .content {
                 grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -753,8 +837,22 @@
                 min-height: 34px;
             }
             
-            .harga-produk .harga {
-                font-size: 15px;
+            .harga-produk .harga { font-size: 15px; }
+            
+            .social-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+            }
+            
+            .social-btn {
+                font-size: 12px;
+                padding: 10px 10px;
+                gap: 6px;
+            }
+            
+            .social-btn svg {
+                width: 20px;
+                height: 20px;
             }
             
             .st-footer .footer-grid {
@@ -762,9 +860,7 @@
                 gap: 20px;
             }
             
-            .st-footer .map-frame {
-                height: 140px;
-            }
+            .st-footer .map-frame { height: 140px; }
             
             #content-kredit {
                 flex-direction: column;
@@ -792,16 +888,28 @@
                 bottom: 150px;
             }
             
-            .chatBox.show {
-                bottom: 160px;
-            }
+            .chatBox.show { bottom: 160px; }
             
-            .articles-grid {
-                grid-template-columns: 1fr;
-            }
+            .articles-grid { grid-template-columns: 1fr 1fr; }
         }
         
         @media (max-width: 480px) {
+            .banner-hero {
+                min-height: 150px;
+                border-radius: 8px;
+            }
+            
+            .banner-hero .overlay {
+                min-height: 150px;
+                padding: 15px;
+            }
+            
+            .banner-hero .overlay h1 { font-size: 18px; }
+            .banner-hero .overlay p { font-size: 12px; }
+            .banner-hero .overlay .btn-hero { padding: 8px 18px; font-size: 11px; }
+            
+            .slider .slides img { height: 180px; }
+            
             .category3 {
                 gap: 8px;
                 padding: 10px;
@@ -823,9 +931,7 @@
                 gap: 10px;
             }
             
-            .post-summary-wrap {
-                padding: 10px;
-            }
+            .post-summary-wrap { padding: 10px; }
             
             .tombol-detail-beli {
                 flex-direction: column;
@@ -836,6 +942,31 @@
                 padding: 6px 0;
                 font-size: 12px;
             }
+            
+            .social-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 8px;
+            }
+            
+            .social-btn {
+                font-size: 10px;
+                padding: 8px 6px;
+                gap: 4px;
+                border-radius: 8px;
+            }
+            
+            .social-btn svg {
+                width: 16px;
+                height: 16px;
+            }
+            
+            .social-section h3 {
+                font-size: 18px;
+            }
+            
+            .articles-grid { grid-template-columns: 1fr; }
+            
+            .st-footer .footer-grid { grid-template-columns: 1fr; gap: 20px; }
         }
     </style>
 </head>
@@ -869,6 +1000,17 @@
             </a>
         </div>
     </header>
+    
+    <!-- ======================================== -->
+    <!-- BANNER HERO (BACKGROUND) -->
+    <!-- ======================================== -->
+    <div class="banner-hero" id="banner-hero" style="background-image: url('https://via.placeholder.com/1200x300/1c5d69/fff?text=TeslaSmart');">
+        <div class="overlay">
+            <h1 id="hero-title">Selamat Datang di TeslaSmart</h1>
+            <p id="hero-subtitle">Temukan berbagai produk berkualitas dengan harga terbaik</p>
+            <a href="#content-wrap" class="btn-hero">Belanja Sekarang</a>
+        </div>
+    </div>
     
     <!-- ======================================== -->
     <!-- SLIDER BANNER -->
@@ -920,18 +1062,28 @@
     </section>
     
     <!-- ======================================== -->
+    <!-- MEDIA SOSIAL -->
+    <!-- ======================================== -->
+    <div class="social-section">
+        <div class="width">
+            <h3>Temukan Kami Di :</h3>
+            <div class="social-grid" id="social-container">
+                <!-- Akan di-generate oleh JavaScript -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- ======================================== -->
     <!-- FOOTER -->
     <!-- ======================================== -->
     <footer class="st-footer">
         <div class="footer-body">
             <div class="footer-grid">
-                <!-- Kolom 1: Logo & Deskripsi -->
                 <div class="footer-col">
                     <img id="footer-logo" src="https://via.placeholder.com/300x80/1c5d69/fff?text=TeslaSmart" alt="TeslaSmart" class="logo-img" />
                     <p id="footer-description">Toko Online Terbaik. Desain Keren, Fitur Melimpah, Gratis Hosting Selamanya.</p>
                 </div>
                 
-                <!-- Kolom 2: Alamat & Kontak -->
                 <div class="footer-col">
                     <h4>Alamat Kami</h4>
                     <div class="address-block">
@@ -941,7 +1093,6 @@
                     <p class="contact-line"><span class="label">Email :</span> <span id="footer-email">admin@teslasmart.com</span></p>
                 </div>
                 
-                <!-- Kolom 3: Menu -->
                 <div class="footer-col">
                     <h4>Menu</h4>
                     <ul>
@@ -953,7 +1104,6 @@
                     </ul>
                 </div>
                 
-                <!-- Kolom 4: Google Maps -->
                 <div class="footer-col">
                     <h4>Google Maps</h4>
                     <iframe id="google-maps-frame" class="map-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.0!2d110.5!3d-7.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zN8KwMzAnMDAuMCJTIDExMMKwMzAnMDAuMCJF!5e0!3m2!1sid!2sid!4v1234567890" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -1019,7 +1169,6 @@
         // DATA & KONFIGURASI
         // ============================================
         
-        // Default Data (akan disimpan di LocalStorage)
         const DEFAULT_DATA = {
             settings: {
                 siteName: 'TeslaSmart',
@@ -1031,7 +1180,16 @@
                 mapsLink: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.0!2d110.5!3d-7.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zN8KwMzAnMDAuMCJTIDExMMKwMzAnMDAuMCJF!5e0!3m2!1sid!2sid!4v1234567890',
                 poweredText: 'Powered by : TeslaSmart',
                 poweredLink: 'https://teslasmart-online-shop.my.id',
-                chatGreeting: 'Hello, Ada yang ingin ditanyakan?'
+                chatGreeting: 'Hello, Ada yang ingin ditanyakan?',
+                bannerBg: 'https://via.placeholder.com/1200x300/1c5d69/fff?text=TeslaSmart',
+                heroTitle: 'Selamat Datang di TeslaSmart',
+                heroSubtitle: 'Temukan berbagai produk berkualitas dengan harga terbaik',
+                shopee: '#',
+                tokopedia: '#',
+                tiktok: '#',
+                instagram: '#',
+                facebook: '#',
+                youtube: '#'
             },
             categories: [
                 { id: 'cat1', name: 'Furniture', icon: 'https://www.svgrepo.com/show/401027/belongings-chair-drawer-furniture-households-interior.svg' },
@@ -1081,7 +1239,6 @@
             }
         };
         
-        // Inisialisasi jika belum ada data
         if (!DB.get('settings')) {
             DB.saveAll(DEFAULT_DATA);
         }
@@ -1089,6 +1246,24 @@
         // ============================================
         // RENDER FUNGSI
         // ============================================
+        
+        function renderBannerBackground() {
+            const settings = DB.get('settings') || {};
+            const bannerBg = settings.bannerBg || 'https://via.placeholder.com/1200x300/1c5d69/fff?text=TeslaSmart';
+            const heroTitle = settings.heroTitle || 'Selamat Datang di TeslaSmart';
+            const heroSubtitle = settings.heroSubtitle || 'Temukan berbagai produk berkualitas dengan harga terbaik';
+            
+            const hero = document.getElementById('banner-hero');
+            if (hero) {
+                hero.style.backgroundImage = `url('${bannerBg}')`;
+            }
+            
+            const titleEl = document.getElementById('hero-title');
+            if (titleEl) titleEl.textContent = heroTitle;
+            
+            const subtitleEl = document.getElementById('hero-subtitle');
+            if (subtitleEl) subtitleEl.textContent = heroSubtitle;
+        }
         
         function renderBanners() {
             const data = DB.getAll();
@@ -1188,11 +1363,41 @@
             `).join('');
         }
         
+        function renderSocial() {
+            const settings = DB.get('settings') || {};
+            const container = document.getElementById('social-container');
+            
+            if (!container) return;
+            
+            const socialLinks = [
+                { id: 'shopee', label: 'Shopee', icon: '🛍️', url: settings.shopee || '#' },
+                { id: 'tokopedia', label: 'Tokopedia', icon: '🛒', url: settings.tokopedia || '#' },
+                { id: 'tiktok', label: 'TikTok', icon: '🎵', url: settings.tiktok || '#' },
+                { id: 'instagram', label: 'Instagram', icon: '📷', url: settings.instagram || '#' },
+                { id: 'facebook', label: 'Facebook', icon: '📘', url: settings.facebook || '#' },
+                { id: 'youtube', label: 'YouTube', icon: '▶️', url: settings.youtube || '#' }
+            ];
+            
+            const activeLinks = socialLinks.filter(link => link.url && link.url !== '#');
+            
+            if (activeLinks.length === 0) {
+                container.innerHTML = `<p style="grid-column:1/-1;text-align:center;color:#888;padding:20px;">Belum ada link media sosial. Atur di Dashboard Admin.</p>`;
+                return;
+            }
+            
+            container.innerHTML = activeLinks.map(link => `
+                <a href="${link.url}" class="social-btn" target="_blank" rel="noopener noreferrer">
+                    <span>${link.icon}</span>
+                    ${link.label}
+                </a>
+            `).join('');
+        }
+        
         function renderSettings() {
             const data = DB.getAll();
             const s = data.settings;
             
-            // Meta Tags untuk Media Sosial
+            // Meta Tags
             document.getElementById('meta-title').textContent = s.siteName + ' - Toko Online';
             document.getElementById('meta-description').content = s.siteDescription || 'Toko Online Terbaik.';
             document.getElementById('og-title').content = s.siteName + ' - Toko Online';
@@ -1225,10 +1430,12 @@
         }
         
         function renderAll() {
+            renderBannerBackground();
             renderBanners();
             renderCategories();
             renderProducts();
             renderArticles();
+            renderSocial();
             renderSettings();
             initSlider();
             initChatToggle();
@@ -1270,7 +1477,6 @@
                 goToSlide(currentSlide - 1);
             }
             
-            // Event listeners
             document.getElementById('prev-slide').addEventListener('click', () => {
                 clearInterval(slideInterval);
                 prevSlide();
@@ -1296,7 +1502,6 @@
                 slideInterval = setInterval(nextSlide, 4000);
             }
             
-            // Pause on hover
             const slider = document.querySelector('.slider');
             slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
             slider.addEventListener('mouseleave', startAutoSlide);
@@ -1318,7 +1523,6 @@
                 box.classList.toggle('show');
             });
             
-            // Tutup chat saat klik di luar
             document.addEventListener('click', function(e) {
                 if (!e.target.closest('.chatButton') && !e.target.closest('.chatBox')) {
                     box.classList.remove('show');
@@ -1388,14 +1592,12 @@
         
         document.addEventListener('DOMContentLoaded', renderAll);
         
-        // Auto-refresh saat data berubah (dari admin)
         window.addEventListener('storage', function(e) {
             if (e.key && e.key.startsWith('teslasmart_')) {
                 renderAll();
             }
         });
         
-        // Listen untuk trigger update dari admin
         window.addEventListener('storage', function(e) {
             if (e.key === 'teslasmart_trigger_update') {
                 renderAll();
